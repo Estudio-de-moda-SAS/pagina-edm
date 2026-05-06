@@ -73,3 +73,6 @@ export default defineConfig([
   },
 ])
 ```
+
+# pagina-edm
+pagina corporativa creada en vite
