@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./PoliticaCookies.css";
+import "./Politicacookies.css";
 
 // Contenido estructurado como secciones colapsables
 const sections = [
