@@ -1,0 +1,246 @@
+/* ─── Base ───────────────────────────────────────────────── */
+.footer {
+  background: #232323;
+  color: #ccc;
+  padding: 48px 40px 28px;
+}
+
+/* ─── Desktop grid ───────────────────────────────────────── */
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 1.1fr;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ─── Section headings ───────────────────────────────────── */
+.footer__col-title {
+  background: none;
+  border: none;
+  cursor: default;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 22px;
+  letter-spacing: 0.02em;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+
+/* Arrow hidden on desktop */
+.footer__arrow {
+  display: none;
+  font-size: 11px;
+  color: #666;
+  transition: transform 0.25s;
+}
+
+/* Body always visible on desktop */
+.footer__col-body {
+  overflow: visible;
+}
+
+/* ─── Contact items ──────────────────────────────────────── */
+.footer__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-align: left;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footer__contact-icon {
+  flex-shrink: 0;
+  color: #777;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.footer__contact-text {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* ─── Social icons ───────────────────────────────────────── */
+.footer__social {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.social-icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #484848;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  text-decoration: none;
+  transition: border-color 0.22s, color 0.22s, background 0.22s, box-shadow 0.22s;
+}
+
+/* LinkedIn: brand blue on hover */
+.social-icon--li:hover {
+  color: #0A66C2;
+  border-color: #0A66C2;
+  background: rgba(10, 102, 194, 0.08);
+  box-shadow: 0 0 0 1px rgba(10, 102, 194, 0.15);
+}
+
+/* Instagram: brand magenta on hover */
+.social-icon--ig:hover {
+  color: #E1306C;
+  border-color: #E1306C;
+  background: rgba(225, 48, 108, 0.08);
+  box-shadow: 0 0 0 1px rgba(225, 48, 108, 0.15);
+}
+
+/* Larger variant for mobile */
+.social-icon--lg {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+}
+
+.social-icon--lg svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ─── Brands & Legal (lista con dots) ─────────────────────── */
+.footer__brands,
+.footer__legal {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__brands li,
+.footer__legal li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.footer__dot {
+  width: 4px;
+  height: 4px;
+  background: #555;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.footer__brands li a,
+.footer__legal li a {
+  font-size: 13px;
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__brands li a:hover,
+.footer__legal li a:hover {
+  color: #fff;
+}
+
+/* ─── Bottom bar ─────────────────────────────────────────── */
+.footer__divider {
+  border: none;
+  border-top: 1px solid #2e2e2e;
+  margin: 36px auto 0;
+  max-width: 1100px;
+}
+
+.footer__bottom {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  font-size: 11px;
+  color: #4a4a4a;
+  text-align: center;
+}
+
+/* ─── MOBILE (≤ 700px) ───────────────────────────────────── */
+@media (max-width: 700px) {
+  .footer { padding: 0; }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 100%;
+  }
+
+  .footer__section {
+    border-bottom: 1px solid #2e2e2e;
+  }
+
+  .footer__col-title {
+    font-size: 15px;
+    margin-bottom: 0;
+    padding: 17px 20px;
+    cursor: pointer;
+  }
+
+  .footer__arrow { display: inline-block; }
+
+  .footer__col-title.open .footer__arrow {
+    transform: rotate(180deg);
+  }
+
+  .footer__col-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    transition: max-height 0.32s ease, padding 0.3s;
+  }
+
+  .footer__col-body.open {
+    max-height: 440px;
+    padding: 4px 20px 22px;
+  }
+
+  /* Desktop social hidden, mobile social visible */
+  .footer__social--desktop { display: none !important; }
+
+  .footer__social--mobile {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    padding: 26px 20px;
+    border-bottom: 1px solid #2e2e2e;
+  }
+
+  .footer__divider { display: none; }
+
+  .footer__bottom {
+    padding: 16px 20px;
+    text-align: center;
+  }
+}
+
+/* ─── DESKTOP (> 700px) ──────────────────────────────────── */
+@media (min-width: 701px) {
+  .footer__social--mobile { display: none; }
+  .footer__social--desktop { display: flex; }
+}

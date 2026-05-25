@@ -1,0 +1,695 @@
+/* ============================================
+   ROOT
+   ============================================ */
+.etica-form {
+  background-color: #fafafa;
+  min-height: calc(100vh - 200px);
+}
+
+.etica-form__hero {
+  padding: 60px 60px 100px;
+}
+
+.etica-form__container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.etica-form__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.etica-form__kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.etica-form__title {
+  font-size: 44px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.etica-form__subtitle {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #555;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   TABS
+   ============================================ */
+.etica-tabs {
+  display: flex;
+  gap: 4px;
+  background-color: #ececec;
+  padding: 4px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.etica-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #777;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.etica-tab:hover:not(.etica-tab--active) {
+  color: #1a1a1a;
+}
+
+.etica-tab--active {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================
+   CONTENIDO
+   ============================================ */
+.etica-content {
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* === Info informativa === */
+.etica-info {
+  padding: 32px 40px 28px;
+  border-bottom: 1px solid #ececec;
+}
+
+.etica-info p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 14px;
+}
+
+.etica-info p:last-child {
+  margin-bottom: 0;
+}
+
+.etica-info strong {
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+.etica-info__warning {
+  padding: 14px 18px;
+  background-color: #fef9e7;
+  border-left: 3px solid #f0c419;
+  border-radius: 0 4px 4px 0;
+  margin: 16px 0 !important;
+}
+
+.etica-info__email {
+  color: #1a1a1a;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #1a1a1a;
+  transition: opacity 0.2s ease;
+}
+
+.etica-info__email:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   FORMULARIO
+   ============================================ */
+.etica-form-wrapper {
+  padding: 32px 40px 40px;
+}
+
+/* Aviso de anonimato */
+.etica-anon-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background-color: #f0f9ff;
+  border-left: 3px solid #1f5fa8;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 24px;
+  font-size: 13.5px;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.etica-anon-notice svg {
+  color: #1f5fa8;
+  flex-shrink: 0;
+}
+
+.etica-anon-notice strong {
+  font-weight: 700;
+}
+
+/* Campos del formulario */
+.etica-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 66px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 0.01em;
+}
+
+.field-required {
+  color: #d32f2f;
+  margin-left: 2px;
+}
+
+.field-optional {
+  color: #888;
+  font-weight: 400;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 1.5px solid #d5d5d5;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14.5px;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field-input::placeholder {
+  color: #aaa;
+}
+
+.field-input:hover {
+  border-color: #888;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.08);
+}
+
+.field-input:invalid:not(:placeholder-shown) {
+  border-color: #d32f2f;
+}
+
+/* Select custom */
+.field-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* Textarea */
+.field-textarea {
+  resize: vertical;
+  min-height: 140px;
+  font-family: inherit;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: #888;
+  text-align: right;
+}
+
+/* ============================================
+   CHECKBOX EMPLEADO (dos opciones Sí / No)
+   ============================================ */
+.field-checkbox-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 4px;
+      justify-content: center;
+}
+
+.field-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.field-checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.field-checkbox__box {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #d5d5d5;
+  border-radius: 4px;
+  background-color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.field-checkbox:hover .field-checkbox__box {
+  border-color: #888;
+}
+
+.field-checkbox input:focus-visible + .field-checkbox__box {
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.08);
+}
+
+.field-checkbox input:checked + .field-checkbox__box {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.field-checkbox__text {
+  font-size: 14px;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+/* ============================================
+   ARCHIVOS ADJUNTOS
+   ============================================ */
+.field-upload {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background-color: #fafafa;
+  border: 1.5px dashed #d5d5d5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  color: #555;
+}
+
+.field-upload:hover {
+  border-color: #1a1a1a;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+
+.field-upload__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.field-upload__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field-upload__title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.field-upload__hint {
+  font-size: 12px;
+  color: #888;
+}
+
+.field-file-error {
+  padding: 10px 14px;
+  background-color: #fde8e8;
+  color: #c62828;
+  border-radius: 4px;
+  font-size: 13px;
+  border-left: 3px solid #d32f2f;
+}
+
+/* Lista de archivos */
+.field-files {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-files__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  color: #1a1a1a;
+}
+
+.field-files__item > svg {
+  color: #777;
+  flex-shrink: 0;
+}
+
+.field-files__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.field-files__name {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.field-files__size {
+  font-size: 11.5px;
+  color: #888;
+}
+
+.field-files__remove {
+  background: none;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #777;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.field-files__remove:hover {
+  background-color: #ffffff;
+  color: #d32f2f;
+}
+
+/* ============================================
+   ACCIONES
+   ============================================ */
+.field-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.field-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease, gap 0.25s ease;
+}
+
+.field-submit:hover:not(:disabled) {
+  background-color: #000;
+  transform: translateY(-2px);
+  gap: 14px;
+}
+
+.field-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.field-submit__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spinner 0.7s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.field-disclaimer {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 460px;
+}
+
+/* ============================================
+   MENSAJE DE ÉXITO
+   ============================================ */
+.etica-success {
+  text-align: center;
+  padding: 32px 20px;
+}
+
+.etica-success__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 50%;
+  animation: success-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes success-pop {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.etica-success__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+
+.etica-success__text {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #555;
+  margin: 0 auto 24px;
+  max-width: 480px;
+}
+
+.etica-success__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: none;
+  color: #1a1a1a;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.etica-success__button:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .etica-form__hero {
+    padding: 40px 20px 70px;
+  }
+
+  .etica-form__header {
+    margin-bottom: 28px;
+  }
+
+  .etica-form__title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .etica-form__subtitle {
+    font-size: 14.5px;
+  }
+
+  /* Tabs en mobile */
+  .etica-tabs {
+    margin-bottom: 24px;
+  }
+
+  .etica-tab {
+    padding: 10px 8px;
+    font-size: 12.5px;
+    gap: 6px;
+  }
+
+  .etica-tab svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Info */
+  .etica-info {
+    padding: 22px 20px 18px;
+  }
+
+  .etica-info p {
+    font-size: 14px;
+  }
+
+  /* Form */
+
+
+  /* Filas apiladas en mobile */
+  .etica-form-fields {
+    gap: 18px;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .field-input {
+    font-size: 16px; /* Evita zoom automático en iOS */
+    padding: 12px 14px;
+  }
+
+  .field-textarea {
+    min-height: 130px;
+  }
+
+  /* Upload más compacto */
+  .field-upload {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .field-upload__title {
+    font-size: 13px;
+  }
+
+  .field-upload__hint {
+    font-size: 11.5px;
+  }
+
+  /* Submit a ancho completo en mobile */
+  .field-submit {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 22px;
+  }
+
+  /* Success */
+  .etica-success {
+    padding: 24px 12px;
+  }
+
+  .etica-success__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .etica-success__title {
+    font-size: 20px;
+  }
+
+  .etica-success__text {
+    font-size: 14px;
+  }
+}

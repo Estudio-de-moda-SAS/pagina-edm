@@ -1,0 +1,532 @@
+/* ============================================
+   ROOT
+   ============================================ */
+.comunicate {
+  background-color: #ffffff;
+}
+
+/* ============================================
+   SECCIÓN 1 — Hero de Contacto
+   ============================================ */
+.contacto-hero {
+  padding: 80px 60px;
+  background-color: #ffffff;
+}
+
+.contacto-hero__grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* === Columna izquierda: información === */
+.contacto-hero__kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.contacto-hero__title {
+  font-size: 44px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.contacto-hero__subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  text-align: center;
+  margin: 0 auto 36px;
+  max-width: 480px;
+}
+
+/* === Cards de métodos de contacto === */
+.contacto-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contacto-method {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.contacto-method:hover {
+  background-color: #ffffff;
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.contacto-method__icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.contacto-method__icon--email {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.contacto-method__icon--whatsapp {
+  background-color: #25d366;
+  color: #ffffff;
+}
+
+.contacto-method__icon--phone {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.contacto-method__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.contacto-method__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.contacto-method__value {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a1a1a;
+  word-break: break-word;
+}
+
+.contacto-method__arrow {
+  color: #888;
+  transition: color 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.contacto-method:hover .contacto-method__arrow {
+  color: #1a1a1a;
+  transform: translateX(3px);
+}
+
+.contacto-method--whatsapp:hover .contacto-method__arrow {
+  transform: translate(3px, -3px);
+}
+
+/* === Columna derecha: mapa + dirección === */
+.contacto-hero__map-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contacto-map {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.contacto-map iframe {
+  display: block;
+}
+
+/* Card de dirección clickable */
+.contacto-address {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 20px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.contacto-address:hover {
+  background-color: #000;
+  transform: translateY(-2px);
+}
+
+.contacto-address__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.contacto-address__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.contacto-address__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.contacto-address__value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.45;
+}
+
+.contacto-address__arrow {
+  color: rgba(255, 255, 255, 0.7);
+  transition: transform 0.25s ease, color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.contacto-address:hover .contacto-address__arrow {
+  color: #ffffff;
+  transform: translate(3px, -3px);
+}
+
+/* ============================================
+   SECCIÓN 2 — Notificaciones Judiciales
+   ============================================ */
+.legal {
+  padding: 40px 60px 100px;
+  background-color: #ffffff;
+}
+
+.legal__container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.legal__divider {
+  height: 1px;
+  background-color: #e5e5e5;
+  margin-bottom: 60px;
+}
+
+.legal__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* === Columna izquierda: heading === */
+.legal__heading {
+  position: sticky;
+  top: 24px;
+}
+
+.legal__kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.legal__title {
+  font-size: 44px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* === Columna derecha: lista === */
+.legal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.legal-item {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #ececec;
+}
+
+.legal-item:last-child {
+  border-bottom: none;
+}
+
+.legal-item__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  color: #1a1a1a;
+  flex-shrink: 0;
+}
+
+.legal-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.legal-item__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.legal-item__value {
+  font-size: 14.5px;
+  color: #1a1a1a;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.legal-item__value--link {
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  display: inline-block;
+  width: fit-content;
+}
+
+.legal-item__value--link:hover {
+  border-bottom-color: #1a1a1a;
+}
+
+/* Botón de copiar */
+.legal-item__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.legal-item__copy:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+/* Aviso legal */
+.legal-notice {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px;
+  background-color: #fafafa;
+  border-left: 3px solid #1a1a1a;
+  border-radius: 0 4px 4px 0;
+}
+
+.legal-notice__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a1a;
+  flex-shrink: 0;
+  margin-top: -2px;
+}
+
+.legal-notice__text {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #555;
+  margin: 0;
+}
+
+.legal-notice__link {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid #1a1a1a;
+  transition: opacity 0.2s ease;
+}
+
+.legal-notice__link:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 960px) {
+  .contacto-hero {
+    padding: 50px 24px;
+  }
+
+  .contacto-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* En mobile el mapa va arriba */
+  .contacto-hero__map-section {
+    order: -1;
+  }
+
+  .contacto-hero__title {
+    font-size: 30px;
+    margin-bottom: 16px;
+  }
+
+  .contacto-hero__subtitle {
+    font-size: 14.5px;
+    margin-bottom: 28px;
+  }
+
+  .contacto-method {
+    padding: 14px 16px;
+    grid-template-columns: 44px 1fr auto;
+    gap: 12px;
+  }
+
+  .contacto-method__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contacto-method__value {
+    font-size: 14px;
+  }
+
+  .contacto-map {
+    aspect-ratio: 16 / 11;
+  }
+
+  .contacto-address {
+    padding: 16px;
+  }
+
+  /* Sección 2 — Legal */
+  .legal {
+    padding: 30px 24px 70px;
+  }
+
+  .legal__divider {
+    margin-bottom: 36px;
+  }
+
+  .legal__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .legal__heading {
+    position: static;
+  }
+
+  .legal__title {
+    font-size: 30px;
+  }
+
+  .legal-item {
+    grid-template-columns: 32px 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+    padding: 14px 0;
+  }
+
+  .legal-item__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* En mobile el botón de copiar va abajo del valor */
+  .legal-item__copy {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    justify-self: start;
+    margin-top: 4px;
+  }
+
+  .legal-item__value {
+    font-size: 14px;
+  }
+
+  .legal-notice {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .legal-notice__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .legal-notice__text {
+    font-size: 13px;
+  }
+
+
+
+}

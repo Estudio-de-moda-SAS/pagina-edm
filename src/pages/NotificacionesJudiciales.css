@@ -1,0 +1,301 @@
+/* ============================================
+   ROOT
+   ============================================ */
+.judiciales {
+  background-color: #fafafa;
+  min-height: calc(100vh - 200px);
+}
+
+.judiciales__hero {
+  padding: 60px 60px 100px;
+}
+
+.judiciales__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.judiciales__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.judiciales__kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.judiciales__title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.judiciales__subtitle {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   GRID DE TARJETAS
+   ============================================ */
+.judiciales__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.judicial-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.judicial-card--wide {
+  grid-column: 1 / -1;
+}
+
+/* Variante link (clickable) */
+.judicial-card--link {
+  cursor: pointer;
+}
+
+.judicial-card--link:hover {
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.judicial-card__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.judicial-card--link:hover .judicial-card__icon {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.judicial-card__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.judicial-card__value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.judicial-card__value-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Botón copiar NIT */
+.judicial-card__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.judicial-card__copy:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+/* Flecha en cards-link */
+.judicial-card__arrow {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  color: #888;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.judicial-card--link:hover .judicial-card__arrow {
+  color: #1a1a1a;
+  transform: translateX(3px);
+}
+
+/* ============================================
+   AVISO LEGAL
+   ============================================ */
+.judicial-notice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+  padding: 28px 32px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.judicial-notice__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.judicial-notice__title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+.judicial-notice__text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 12px;
+}
+
+.judicial-notice__text:last-child {
+  margin-bottom: 0;
+}
+
+.judicial-notice__text strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.judicial-notice__link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  transition: border-color 0.2s ease;
+  word-break: break-word;
+}
+
+.judicial-notice__link:hover {
+  border-bottom-color: #ffffff;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .judiciales__hero {
+    padding: 40px 20px 70px;
+  }
+
+  .judiciales__header {
+    margin-bottom: 36px;
+  }
+
+  .judiciales__title {
+    font-size: 32px;
+    margin-bottom: 14px;
+  }
+
+  .judiciales__subtitle {
+    font-size: 14.5px;
+  }
+
+  .judiciales__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .judicial-card {
+    padding: 22px 20px;
+  }
+
+  .judicial-card__icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .judicial-card__value {
+    font-size: 15px;
+  }
+
+  .judicial-card__arrow {
+    top: 22px;
+    right: 20px;
+  }
+
+  /* Aviso legal */
+  .judicial-notice {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+
+  .judicial-notice__icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .judicial-notice__title {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .judicial-notice__text {
+    font-size: 13.5px;
+  }
+}

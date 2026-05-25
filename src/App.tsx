@@ -1,122 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/header/Header";
+import Inicio from "./pages/Inicio";
+import NuestrasMarcas from "./pages/NuestrasMarcas";
+import LineaEtica from "./pages/LineaEtica";
+import NotificacionesJudiciales from "./pages/NotificacionesJudiciales";
+import PoliticaCookies from "./pages/PoliticaCookies";
+import NuestraCultura from "./pages/NuestraCultura";
+import ProteccionDenunciante from "./pages/ProteccionDenunciante";
+import Comunicate from "./pages/Comunicate";
+import FormularioEtica from "./pages/FormularioEtica";
+/*Marcas*/
+import Diesel from "./pages/Diesel"; 
+import Girbaud from "./pages/Girbaud";
+import Superdry from "./pages/Superdry";  
+import Kipling from "./pages/Kipling";  
+import NewBalance from "./pages/New-balance";  
+import Pilatos from "./pages/Pilatos";  
+import Replay from "./pages/Replay"; 
+import Footer from "./components/footer/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/nuestras-marcas" element={<NuestrasMarcas />} />
+        <Route path="/linea-etica" element={<LineaEtica />} />
+        <Route path="/notificaciones-judiciales" element={<NotificacionesJudiciales />} />
+        <Route path="/nuestra-cultura" element={<NuestraCultura />} />
+        <Route path="/politica-cookies" element={<PoliticaCookies />} />
+        <Route path="/comunicate" element={<Comunicate />} />
+        <Route path="/proteccion-denunciante" element={<ProteccionDenunciante />} />
+         <Route path="/diesel" element={<Diesel/>} />
+           <Route path="/girbaud" element={<Girbaud/>} />
+           <Route path="/superdry" element={<Superdry/>} />
+           <Route path="/kipling" element={<Kipling/>} />
+           <Route path="/New-balance" element={<NewBalance/>} />
+           <Route path="/pilatos" element={<Pilatos/>} />
+           <Route path="/replay" element={<Replay/>} />
+        <Route path="/formulario-etica" element={<FormularioEtica />} />
+      </Routes>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <Footer/>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

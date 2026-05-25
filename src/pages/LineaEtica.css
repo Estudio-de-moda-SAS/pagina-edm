@@ -1,0 +1,455 @@
+/* ============================================
+   ROOT
+   ============================================ */
+.linea-etica {
+  background-color: #ffffff;
+}
+
+/* ============================================
+   SECCIÓN 1 — Hero Línea Ética
+   ============================================ */
+.linea-etica__hero {
+  padding: 60px;
+}
+
+.linea-etica__grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.linea-etica__title {
+  font-size: 44px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 24px;
+  line-height: 1.1;
+}
+
+.linea-etica__paragraph {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 16px;
+}
+
+.linea-etica__paragraph strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* CTA correo */
+.linea-etica__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 28px 0;
+  padding: 20px 24px;
+  background-color: #f7f5f1;
+  border-left: 3px solid #1a1a1a;
+}
+
+.linea-etica__cta-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.linea-etica__cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: gap 0.25s ease, color 0.2s ease;
+}
+
+.linea-etica__cta-button:hover {
+  gap: 14px;
+  color: #000;
+}
+
+.linea-etica__cta-hint {
+  font-size: 13px;
+  color: #777;
+  font-style: italic;
+}
+
+/* Acordeón */
+.linea-etica__accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.linea-etica__accordion-trigger:hover {
+  color: #000;
+}
+
+.linea-etica__chevron {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.linea-etica__chevron--open {
+  transform: rotate(180deg);
+}
+
+.linea-etica__accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.linea-etica__accordion-content--open {
+  grid-template-rows: 1fr;
+}
+
+.linea-etica__accordion-inner {
+  overflow: hidden;
+}
+
+.linea-etica__accordion-content--open .linea-etica__accordion-inner {
+  padding-top: 20px;
+}
+
+.linea-etica__list {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #555;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.linea-etica__list li {
+  margin-bottom: 10px;
+}
+
+.linea-etica__list li:last-child {
+  margin-bottom: 0;
+}
+
+.linea-etica__image-wrapper {
+  width: 100%;
+}
+
+.linea-etica__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   SECCIÓN 2 — Manual de Sagrilaft
+   ============================================ */
+.sagrilaft {
+  padding: 80px 60px;
+  background-color: #ffffff;
+}
+
+.sagrilaft__grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Imagen con decoraciones */
+.sagrilaft__image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1 / 1;
+  justify-self: end;
+}
+
+.sagrilaft__image-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.sagrilaft__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Variante: imagen completa visible (sin recortar) */
+.sagrilaft__image--contain {
+  object-fit: contain;
+}
+
+/* Variante: wrapper sin las decoraciones azules */
+.sagrilaft__image-wrapper--clean {
+  background-color: transparent;
+}
+
+/* Variante: wrapper más ancho para imágenes horizontales */
+.sagrilaft__image-wrapper--wide {
+  max-width: 560px;
+  aspect-ratio: 16 / 10;
+}
+
+/* Rectángulos decorativos azules */
+.sagrilaft__deco {
+  position: absolute;
+  z-index: 1;
+}
+
+.sagrilaft__deco--top {
+  top: -20px;
+  right: 40px;
+  width: 30px;
+  height: 30px;
+  background-color: #4dc9ff;
+}
+
+.sagrilaft__deco--right {
+  top: 60px;
+  right: -30px;
+  width: 60px;
+  height: 140px;
+  background-color: #1f5fa8;
+}
+
+.sagrilaft__deco--bottom {
+  bottom: -20px;
+  left: -20px;
+  width: 50px;
+  height: 30px;
+  background-color: #1f5fa8;
+}
+
+/* Contenido lado derecho */
+.sagrilaft__content {
+  width: 100%;
+  max-width: 440px;
+  justify-self: start;
+}
+
+/* Variante: contenido más ancho para textos largos */
+.sagrilaft__content--wide {
+  max-width: 520px;
+}
+
+.sagrilaft__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.sagrilaft__subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 32px;
+}
+
+.sagrilaft__paragraph {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 18px;
+}
+
+.sagrilaft__paragraph:last-of-type {
+  margin-bottom: 32px;
+}
+
+.sagrilaft__paragraph strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.sagrilaft__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid #1a1a1a;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.sagrilaft__button:hover {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.sagrilaft__button-arrow {
+  transition: transform 0.25s ease;
+}
+
+.sagrilaft__button:hover .sagrilaft__button-arrow {
+  transform: translate(3px, -3px);
+}
+
+.sagrilaft__hint {
+  display: block;
+  margin-top: 14px;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 0.04em;
+}
+
+/* === Variante invertida: texto izquierda, imagen derecha === */
+.sagrilaft--reverse .sagrilaft__grid {
+  grid-template-areas: "content image";
+}
+
+.sagrilaft--reverse .sagrilaft__content {
+  grid-area: content;
+  justify-self: end;
+}
+
+.sagrilaft--reverse .sagrilaft__image-wrapper {
+  grid-area: image;
+  justify-self: start;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 960px) {
+  /* Sección 1 */
+  .linea-etica__hero {
+    padding: 40px 24px;
+  }
+
+  .linea-etica__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* En mobile la imagen va arriba */
+  .linea-etica__image-wrapper {
+    order: -1;
+  }
+
+  .linea-etica__title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .linea-etica__paragraph {
+    font-size: 14.5px;
+  }
+
+  .linea-etica__cta {
+    margin: 20px 0;
+    padding: 16px 20px;
+  }
+
+  .linea-etica__cta-button {
+    font-size: 14.5px;
+    word-break: break-all;
+  }
+
+  /* Sección 2, 3 y 4 */
+  .sagrilaft {
+    padding: 50px 24px;
+  }
+
+  .sagrilaft__grid,
+  .sagrilaft--reverse .sagrilaft__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+    gap: 32px;
+    justify-items: center;
+  }
+
+  .sagrilaft__content,
+  .sagrilaft--reverse .sagrilaft__content {
+    grid-area: auto;
+    justify-self: center;
+    text-align: center;
+    order: 2;
+    max-width: 100%;
+  }
+
+  .sagrilaft__image-wrapper,
+  .sagrilaft--reverse .sagrilaft__image-wrapper {
+    grid-area: auto;
+    justify-self: center;
+    order: 1;
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .sagrilaft__title {
+    font-size: 22px;
+  }
+
+  .sagrilaft__subtitle,
+  .sagrilaft__paragraph {
+    font-size: 14.5px;
+  }
+
+  /* Botón ocupa todo el ancho disponible y el texto no se rompe raro */
+  .sagrilaft__button {
+    display: flex;
+    width: 72%;
+    max-width: 360px;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 13.5px;
+  }
+
+  .sagrilaft__hint {
+    text-align: center;
+  }
+
+  .sagrilaft__deco--right {
+    width: 40px;
+    height: 100px;
+    right: -16px;
+  }
+
+  .sagrilaft__deco--top {
+    width: 22px;
+    height: 22px;
+  }
+
+  .sagrilaft__deco--bottom {
+    width: 36px;
+    height: 22px;
+  }
+}

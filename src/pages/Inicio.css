@@ -1,0 +1,424 @@
+/* ============================================
+   ROOT
+   ============================================ */
+.inicio {
+  background-color: #ffffff;
+}
+
+/* ============================================
+   SECCIÓN 1 — Hero Banner
+   ============================================ */
+.inicio-hero {
+  width: 100%;
+  display: block;
+  line-height: 0;
+}
+
+.inicio-hero__picture {
+  display: block;
+  width: 100%;
+}
+
+.inicio-hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   SECCIÓN 2 — Features
+   ============================================ */
+.inicio-features {
+  padding: 80px 60px;
+  background-color: #ffffff;
+}
+
+.inicio-features__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.feature__icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7c3aed;
+  border-radius: 50%;
+  color: #ffffff;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature:hover .feature__icon {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+}
+
+.feature__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.feature__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+
+.feature__text {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #666;
+  margin: 0;
+}
+
+/* ============================================
+   SECCIÓN 3 — Nuestras marcas
+   ============================================ */
+.brands {
+  padding: 60px 60px 80px;
+  background-color: #f5f5f5;
+}
+
+.brands__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.brands__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.brands__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+
+.brands__subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.brands__divider {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background-color: #1a1a1a;
+}
+
+/* Grid de marcas (desktop) */
+.brands__slider {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.brand-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.brand-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.brand-card__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dots (ocultos en desktop) */
+.brands__dots {
+  display: none;
+}
+
+/* ============================================
+   SECCIÓN 4 — Línea Ética EDM
+   ============================================ */
+.etica-home {
+  padding: 80px 60px;
+  background-color: #ffffff;
+}
+
+.etica-home__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Imagen */
+.etica-home__image-wrapper {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.etica-home__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contenido */
+.etica-home__title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.etica-home__text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 20px;
+}
+
+.etica-home__text--strong {
+  color: #1a1a1a;
+}
+
+.etica-home__text strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.etica-home__email {
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid #1a1a1a;
+  transition: opacity 0.2s ease;
+  word-break: break-word;
+}
+
+.etica-home__email:hover {
+  opacity: 0.7;
+}
+
+/* Botón */
+.etica-home__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 16px 24px;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    transform 0.25s ease, gap 0.25s ease;
+}
+
+.etica-home__button:hover {
+  background-color: #ffffff;
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
+  gap: 16px;
+}
+
+.etica-home__button-arrow {
+  margin-left: auto;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.etica-home__button:hover .etica-home__button-arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 960px) {
+  .inicio-features {
+    padding: 60px 24px;
+  }
+
+  .inicio-features__container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 520px;
+  }
+
+  .feature {
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+  }
+
+  .feature__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .feature__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .feature__title {
+    font-size: 15.5px;
+    margin-bottom: 8px;
+  }
+
+  .feature__text {
+    font-size: 13.5px;
+  }
+
+  /* Marcas en mobile: SLIDER */
+  .brands {
+    padding: 50px 0 60px;
+  }
+
+  .brands__header {
+    padding: 0 24px;
+    margin-bottom: 28px;
+  }
+
+  .brands__title {
+    font-size: 22px;
+  }
+
+  .brands__subtitle {
+    font-size: 14px;
+  }
+
+  /* Slider horizontal con scroll-snap */
+  .brands__slider {
+    display: flex;
+    grid-template-columns: none;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    scroll-behavior: smooth;
+    padding: 0 24px;
+  }
+
+  .brands__slider::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .brand-card {
+    flex: 0 0 calc(100% - 48px);
+    scroll-snap-align: center;
+    aspect-ratio: 4 / 3;
+    margin-right: 12px;
+  }
+
+  .brand-card:last-child {
+    margin-right: 0;
+  }
+
+  /* Dots indicadores */
+  .brands__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 0 24px;
+  }
+
+  .brands__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    background-color: #cfcfcf;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease, width 0.25s ease;
+  }
+
+  .brands__dot:hover {
+    background-color: #999;
+  }
+
+  .brands__dot--active {
+    background-color: #1a1a1a;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* Sección 4 — Línea Ética EDM */
+  .etica-home {
+    padding: 50px 24px 60px;
+  }
+
+  .etica-home__container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .etica-home__image-wrapper {
+    aspect-ratio: 4 / 3;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .etica-home__title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .etica-home__text {
+    font-size: 14.5px;
+  }
+
+  .etica-home__button {
+    width: 85%;
+    font-size: 13.5px;
+    padding: 14px 18px;
+    gap: 10px;
+  }
+
+  .etica-home__button span {
+    flex: 1;
+  }
+}

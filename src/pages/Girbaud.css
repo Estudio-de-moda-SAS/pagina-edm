@@ -1,0 +1,247 @@
+/* ============================================
+   ROOT
+   ============================================ */
+.girbaud {
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   HISTORIA
+   ============================================ */
+.girbaud-historia {
+  padding: 60px;
+}
+
+.girbaud-historia__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.girbaud-historia__title {
+  font-size: 44px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.girbaud-historia__text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #555;
+  margin: 0 0 18px;
+}
+
+.girbaud-historia__text:last-child {
+  margin-bottom: 0;
+}
+
+.girbaud-historia__image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.girbaud-historia__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* En desktop el botón "Leer más" no se muestra (todo el texto visible) */
+.girbaud-historia__toggle {
+  display: none;
+}
+
+/* ============================================
+   SECCIÓN 2 — Pilares
+   ============================================ */
+.girbaud-pilares {
+  background-color: #ffffff;
+}
+
+.girbaud-pilares__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 60px 60px;
+}
+
+.girbaud-pilares__title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1c2845;
+  text-align: center;
+  margin: 0 0 48px;
+  letter-spacing: -0.01em;
+}
+
+.girbaud-pilares__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.pilar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.pilar:hover {
+  transform: translateY(-4px);
+}
+
+.pilar__icon {
+  width: 64px;
+  height: 64px;
+  color: #1c2845;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pilar__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pilar__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c2845;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================
+   IMAGEN NUESTRO ADN
+   ============================================ */
+.girbaud-adn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  line-height: 0;
+  padding: 0 60px 60px;
+}
+
+.girbaud-adn__image {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 960px) {
+  .girbaud-historia {
+    padding: 40px 24px;
+  }
+
+  .girbaud-historia__container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* Imagen va arriba en mobile */
+  .girbaud-historia__image-wrapper {
+    order: -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .girbaud-historia__title {
+    font-size: 30px;
+    margin-bottom: 18px;
+  }
+
+  .girbaud-historia__text {
+    font-size: 14.5px;
+  }
+
+  /* En mobile escondemos los párrafos adicionales con animación */
+  .girbaud-historia__more {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+
+  .girbaud-historia__content--expanded .girbaud-historia__more {
+    max-height: 2000px;
+    opacity: 1;
+  }
+
+  /* Botón Leer más / menos */
+  .girbaud-historia__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 18px;
+    background: none;
+    color: #1a1a1a;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .girbaud-historia__toggle:hover,
+  .girbaud-historia__toggle:active {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .girbaud-historia__toggle-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .girbaud-historia__toggle-icon--open {
+    transform: rotate(180deg);
+  }
+
+  /* Pilares en mobile: 2 columnas */
+  .girbaud-pilares__container {
+    padding: 30px 24px 40px;
+  }
+
+  .girbaud-pilares__title {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .girbaud-pilares__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 20px;
+    max-width: 380px;
+  }
+
+  .pilar__icon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .pilar__name {
+    font-size: 14.5px;
+  }
+
+  /* ADN en mobile: padding más pequeño */
+  .girbaud-adn {
+    padding: 0 20px 40px;
+  }
+}
