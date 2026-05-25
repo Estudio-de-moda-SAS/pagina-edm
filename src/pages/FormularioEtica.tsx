@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./FormularioEtica.css";
 import { createDenuncia } from "../utils/createDenuncia";
 
@@ -196,7 +196,7 @@ export default function FormularioEtica() {
   /* ===========================================================
      SUBMIT
      =========================================================== */
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
     setSubmitError("");
@@ -471,10 +471,14 @@ export default function FormularioEtica() {
                       </div>
                     </div>
 
-                    {/* Correo — requerido en ambos forms */}
+                    {/* Correo — requerido en form público, opcional en anónimo */}
                     <div className="field-group">
                       <label htmlFor="correo" className="field-label">
-                        Correo electrónico <span className="field-required">*</span>
+                        Correo electrónico{" "}
+                        {isAnonymous
+                          ? <span className="field-optional">(opcional)</span>
+                          : <span className="field-required">*</span>
+                        }
                       </label>
                       <input
                         type="email"
@@ -483,7 +487,7 @@ export default function FormularioEtica() {
                         className="field-input"
                         value={form.correo}
                         onChange={handleChange}
-                        required
+                        required={!isAnonymous}
                         placeholder="ejemplo@correo.com"
                         autoComplete="email"
                       />
