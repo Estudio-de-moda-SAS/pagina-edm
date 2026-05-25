@@ -1,5 +1,6 @@
 import { useState, useEffect, FormEvent, useRef } from "react";
 import "./FormularioEtica.css";
+import { createDenuncia } from "../utils/createDenuncia";
 
 type TabKey = "publica" | "anonima";
 
@@ -56,6 +57,7 @@ export default function FormularioEtica() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [fileError, setFileError] = useState<string>("");
+  const [submitError, setSubmitError] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   /* ===========================================================
@@ -197,102 +199,29 @@ export default function FormularioEtica() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitError("");
 
-    // Cada tipo va a una tabla diferente en Supabase con su propio payload
-    let payload;
-    let tablaDestino;
+    try {
+      await createDenuncia(form, activeTab, files);
 
-    if (activeTab === "anonima") {
-      // ===== DENUNCIA ANÓNIMA =====
-      // Tabla: denuncias_anonimas (sin nombre/apellido)
-      tablaDestino = "denuncias_anonimas";
-      payload = {
-        cedula: form.cedula || null,
-        telefono: form.telefono || null,
-        correo: form.correo,
-        es_empleado: form.esEmpleado,
-        denuncia: form.denuncia,
-        archivos: files,
-        created_at: new Date().toISOString(),
-      };
-    } else {
-      // ===== DENUNCIA PÚBLICA =====
-      // Tabla: denuncias_publicas (con datos personales completos)
-      tablaDestino = "denuncias_publicas";
-      payload = {
-        nombre: form.nombre,
-        apellido: form.apellido,
-        cedula: form.cedula || null,
-        telefono: form.telefono || null,
-        correo: form.correo,
-        es_empleado: form.esEmpleado,
-        denuncia: form.denuncia,
-        archivos: files,
-        created_at: new Date().toISOString(),
-      };
+      // Limpiar localStorage al enviar exitosamente
+      const keys = STORAGE_KEYS[activeTab];
+      localStorage.removeItem(keys.form);
+      localStorage.removeItem(keys.files);
+      setSubmitted(true);
+    } catch {
+      setSubmitted(false);
+      setSubmitError("No pudimos enviar tu denuncia. Intenta nuevamente.");
+    } finally {
+      setSubmitting(false);
     }
-
-    console.log(`📩 Denuncia preparada para tabla "${tablaDestino}":`, payload);
-
-    // ===========================================================
-    // TODO: CONECTAR CON SUPABASE CUANDO LA BD ESTÉ LISTA
-    // ===========================================================
-    // IMPORTANTE: hay DOS TABLAS DISTINTAS en Supabase:
-    //   - "denuncias_publicas"  -> con nombre, apellido, etc.
-    //   - "denuncias_anonimas"  -> sin datos personales identificables
-    //
-    // Ejemplo de implementación:
-    //
-    // import { supabase } from "../lib/supabaseClient";
-    //
-    // 1) Subir archivos al bucket "denuncias-adjuntos"
-    //    (recomendado: subcarpeta por tipo para mejor organización)
-    // const uploadedFilesUrls: string[] = [];
-    // const subFolder = activeTab === "anonima" ? "anonimas" : "publicas";
-    // for (const file of files) {
-    //   const blob = await (await fetch(file.data)).blob();
-    //   const path = `${subFolder}/${Date.now()}-${file.name}`;
-    //   const { error: uploadError } = await supabase.storage
-    //     .from("denuncias-adjuntos")
-    //     .upload(path, blob);
-    //   if (uploadError) throw uploadError;
-    //   const { data: urlData } = supabase.storage
-    //     .from("denuncias-adjuntos")
-    //     .getPublicUrl(path);
-    //   uploadedFilesUrls.push(urlData.publicUrl);
-    // }
-    //
-    // 2) Insertar en la tabla correcta según el tipo
-    // const { error: insertError } = await supabase
-    //   .from(tablaDestino)
-    //   .insert({
-    //     ...payload,
-    //     archivos: uploadedFilesUrls, // reemplaza el base64 por las URLs
-    //   });
-    // if (insertError) throw insertError;
-    //
-    // NOTA SOBRE ANONIMATO: para denuncias anónimas, asegúrate de:
-    //   - Configurar RLS (Row Level Security) en Supabase
-    //   - No registrar IP en los headers
-    //   - No guardar metadata identificable del usuario
-    // ===========================================================
-
-    // Simula latencia de red
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    // Limpiar localStorage al enviar exitosamente
-    const keys = STORAGE_KEYS[activeTab];
-    localStorage.removeItem(keys.form);
-    localStorage.removeItem(keys.files);
-
-    setSubmitting(false);
-    setSubmitted(true);
   };
 
   const resetForm = () => {
     setForm(INITIAL_FORM);
     setFiles([]);
     setFileError("");
+    setSubmitError("");
     setSubmitted(false);
   };
 
@@ -300,6 +229,7 @@ export default function FormularioEtica() {
     setActiveTab(tab);
     setSubmitted(false);
     setFileError("");
+    setSubmitError("");
   };
 
   const isAnonymous = activeTab === "anonima";
@@ -735,6 +665,9 @@ export default function FormularioEtica() {
 
                     {/* Acciones */}
                     <div className="field-actions">
+                      {submitError && (
+                        <div className="field-file-error">{submitError}</div>
+                      )}
                       <button
                         type="submit"
                         className="field-submit"
