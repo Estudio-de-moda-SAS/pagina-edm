@@ -3,7 +3,7 @@ name: Keep Supabase Awake
 on:
   push:
   schedule:
-    - cron: "*/5 * * * *" # cada 5 mins
+    - cron: "14 * * * *" # cada 5 mins
   workflow_dispatch:
 
 jobs:  
