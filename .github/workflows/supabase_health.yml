@@ -12,7 +12,9 @@ jobs:
     steps:
       - name: Ping Supabase table
         run: |
-          curl -s -o /dev/null -w "%{http_code}" \
+          echo "URL: ${{ secrets.SUPABASE_URL }}/rest/v1/health_check?select=id&limit=1"
+        
+          curl -i \
           "${{ secrets.SUPABASE_URL }}/rest/v1/health_check?select=id&limit=1" \
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
