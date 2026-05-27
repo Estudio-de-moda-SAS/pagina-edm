@@ -18,3 +18,5 @@ jobs:
           "${{ secrets.SUPABASE_URL }}/rest/v1/health_check?select=id&limit=1" \
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
+
+#test
