@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/header/Header";
 import Inicio from "./pages/Inicio";
 import NuestrasMarcas from "./pages/NuestrasMarcas";
@@ -18,10 +18,21 @@ import NewBalance from "./pages/New-balance";
 import Pilatos from "./pages/Pilatos";  
 import Replay from "./pages/Replay"; 
 import Footer from "./components/footer/Footer";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Login from "./components/auth/Login";
+import Auditoria from "./components/auditoria/Auditoria";
+import AuthPopup from "./pages/AuthPopup";
 
-function App() {
+function AppRoutes() {
+  useLocation();
+  const isPopupWindow = typeof window !== "undefined" && !!window.opener;
+
+  if (isPopupWindow) {
+    return <AuthPopup />;
+  }
+
   return (
-    <BrowserRouter>
+    <>
       <Header />
       <Routes>
         <Route path="/" element={<Inicio />} />
@@ -36,13 +47,25 @@ function App() {
            <Route path="/girbaud" element={<Girbaud/>} />
            <Route path="/superdry" element={<Superdry/>} />
            <Route path="/kipling" element={<Kipling/>} />
-           <Route path="/New-balance" element={<NewBalance/>} />
-           <Route path="/pilatos" element={<Pilatos/>} />
-           <Route path="/replay" element={<Replay/>} />
+        <Route path="/New-balance" element={<NewBalance/>} />
+        <Route path="/pilatos" element={<Pilatos/>} />
+        <Route path="/replay" element={<Replay/>} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/auditoria" element={<Auditoria />} />
+        </Route>
         <Route path="/formulario-etica" element={<FormularioEtica />} />
       </Routes>
 
       <Footer/>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 }

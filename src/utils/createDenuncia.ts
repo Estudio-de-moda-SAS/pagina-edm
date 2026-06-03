@@ -47,6 +47,14 @@ export async function createDenuncia(form: any, activeTab: string, adjuntos: Att
     });
 
     if (insertError) throw insertError;
+    try{
+      const denunca = await sendMail(form)
+      console.log(denunca)
+    } catch(e){
+      console.error("Error enviando correo:", e);
+    }
+    
+    
   };
 
 export async function uploadFiles(
@@ -74,3 +82,15 @@ export async function uploadFiles(
 
   return uploadedFilesUrls
 };
+
+export async function sendMail(form: any,) {
+
+  //TODO: Poner el nuevo url de funcion envio correos
+  return await fetch('http://localhost:4141/mail/send', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(form),
+  }) 
+}

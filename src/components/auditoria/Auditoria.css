@@ -1,0 +1,250 @@
+.auditoria {
+  padding: 2.5rem 1.5rem 4rem;
+  background:
+    radial-gradient(circle at top left, rgba(33, 150, 243, 0.08), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
+}
+
+.auditoria__shell {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.auditoria__hero {
+  display: grid;
+  gap: 1.25rem;
+  padding: 2rem;
+  border: 1px solid #e8edf3;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 24px 60px rgba(17, 24, 39, 0.08);
+  text-align: left;
+}
+
+.auditoria__eyebrow {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2196f3;
+}
+
+.auditoria__title {
+  margin: 0;
+  max-width: 11ch;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 0.96;
+  color: #111111;
+}
+
+.auditoria__copy {
+  max-width: 680px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #63676d;
+}
+
+.auditoria__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.auditoria__stat {
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: #f7f9fc;
+  border: 1px solid #e7edf5;
+}
+
+.auditoria__stat-label {
+  display: block;
+  font-size: 0.82rem;
+  color: #6d7278;
+}
+
+.auditoria__stat-value {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #101828;
+}
+
+.auditoria__panel {
+  padding: 1.5rem;
+  border: 1px solid #e8edf3;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 16px 44px rgba(17, 24, 39, 0.06);
+}
+
+.auditoria__filters {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(2, minmax(180px, 0.7fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.auditoria__field {
+  display: grid;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.auditoria__field label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #454b52;
+}
+
+.auditoria__input {
+  min-height: 50px;
+  border: 1px solid #d7dde5;
+  border-radius: 16px;
+  background: #f9fbfd;
+  padding: 0 0.95rem;
+  color: #111111;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.auditoria__input:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.14);
+  background: #ffffff;
+}
+
+.auditoria__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.auditoria__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 0.95rem;
+  border-radius: 999px;
+  background: #f2f7fd;
+  border: 1px solid #d8e8f8;
+  color: #215d8c;
+  font-size: 0.88rem;
+}
+
+.auditoria__table-wrap {
+  overflow: auto;
+  border-radius: 20px;
+  border: 1px solid #edf1f5;
+}
+
+.auditoria__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+  text-align: left;
+}
+
+.auditoria__table thead {
+  background: #f8fafc;
+}
+
+.auditoria__table th,
+.auditoria__table td {
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid #edf1f5;
+  vertical-align: middle;
+}
+
+.auditoria__table th {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.auditoria__table td {
+  color: #1f2937;
+}
+
+.auditoria__table tbody tr:hover {
+  background: #fbfdff;
+}
+
+.auditoria__record-title {
+  display: block;
+  font-weight: 600;
+  color: #111111;
+}
+
+.auditoria__record-subtitle {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.88rem;
+  color: #6b7280;
+}
+
+.auditoria__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 92px;
+  min-height: 34px;
+  padding: 0 0.8rem;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.auditoria__badge--cerrado {
+  background: #ecfdf3;
+  color: #027a48;
+}
+
+.auditoria__badge--revision {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.auditoria__badge--pendiente {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.auditoria__empty {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+@media (max-width: 900px) {
+  .auditoria__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .auditoria__filters {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .auditoria {
+    padding-inline: 1rem;
+  }
+
+  .auditoria__hero,
+  .auditoria__panel {
+    padding: 1.25rem;
+    border-radius: 22px;
+  }
+
+  .auditoria__title {
+    max-width: none;
+  }
+}
