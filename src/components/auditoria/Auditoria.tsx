@@ -3,18 +3,6 @@ import "./Auditoria.css";
 import React from "react";
 import { supabase } from "../../services/supabase.service";
 
-type AuditStatus = "Cerrado" | "En revision" | "Pendiente";
-
-type AuditRecord = {
-  id: string;
-  fecha: string;
-  modulo: string;
-  evento: string;
-  usuario: string;
-  detalle: string;
-  estado: AuditStatus;
-};
-
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("es-CO", {
     day: "2-digit",
