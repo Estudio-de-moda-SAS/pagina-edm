@@ -1,47 +1,75 @@
-import { useEffect, useState } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { getAccessToken, initMSAL, isLoggedIn } from "../../auth/msal";
+import { Navigate, Outlet } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { supabase } from '../../services/supabase.service'
 
-type AuthState = "checking" | "authorized" | "unauthorized";
-
-export default function ProtectedRoute() {
-  const location = useLocation();
-  const [authState, setAuthState] = useState<AuthState>("checking");
+export function ProtectedRoute({allowedRoles = []}: { allowedRoles?: string[] }) {
+  const [sessionLoading, setSessionLoading] = useState(true)
+  const [claimsLoading, setClaimsLoading] = useState(true)
+  const [hasSession, setHasSession] = useState(false)
+  const [hasAccess, setHasAccess] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
+    supabase.auth.getSession().then(({ data }) => {
+      setHasSession(!!data.session)
+      setSessionLoading(false)
+    })
 
-    const validateSession = async () => {
-      try {
-        await initMSAL();
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setHasSession(!!session)
+      setSessionLoading(false)
+    })
 
-        if (!isLoggedIn()) {
-          if (!cancelled) setAuthState("unauthorized");
-          return;
-        }
+    return () => sub.subscription.unsubscribe()
+  }, [])
 
-        await getAccessToken({ forceSilent: true });
+  useEffect(() => {
+    const validate = async () => {
+      setClaimsLoading(true)
 
-        if (!cancelled) setAuthState("authorized");
-      } catch {
-        if (!cancelled) setAuthState("unauthorized");
+      const { data, error } = await supabase.auth.getClaims();
+
+
+      if (error || !data?.claims) {
+        setHasAccess(false);
+        setClaimsLoading(false);
+        return;
       }
+
+      const claims = data.claims
+
+      console.log(claims)
+
+      const roles = [
+        ...(claims.app_metadata?.roles ?? []),
+        ...(claims.user_metadata?.roles ?? []),
+        ...(claims.user_metadata?.custom_claims?.roles ?? []),
+        ...(claims.app_metadata?.role ? [claims.app_metadata.role] : []),
+        ...(claims.user_metadata?.role ? [claims.user_metadata.role] : []),
+      ];
+
+      console.log('Roles del usuario:', roles);
+
+      const allowed =
+        allowedRoles.length === 0 ||
+        allowedRoles.some((role) => roles.includes(role));
+
+      console.log(allowed)
+
+      setHasAccess(allowed);
+      setClaimsLoading(false);
     };
 
-    void validateSession();
+    void validate();
 
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+    const { data: sub } = supabase.auth.onAuthStateChange(() => {
+      void validate();
+    });
 
-  if (authState === "checking") {
-    return <div style={{ padding: "3rem 1.5rem", textAlign: "center" }}>Validando sesion...</div>;
-  }
+    return () => sub.subscription.unsubscribe();
+  }, [allowedRoles]);
 
-  if (authState === "unauthorized") {
-    return <Navigate to="/login" replace state={{ from: location }} />;
-  }
-
-  return <Outlet />;
+  if (sessionLoading || claimsLoading) return <div>Cargando...</div>
+  if (!hasSession) return <Navigate to="/login" replace />
+  if (!hasAccess) return <Navigate to="/unauthorized" replace />
+  return <Outlet />
 }

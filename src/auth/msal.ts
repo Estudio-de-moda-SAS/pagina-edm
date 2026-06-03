@@ -8,7 +8,7 @@ export const msal = new PublicClientApplication({
   auth: {
     clientId: '3faf2b1a-8d9c-4081-bc17-37d76cfd94d1', //Produccion
     authority: 'https://login.microsoftonline.com/cd48ecd9-7e15-4f4b-97d9-ec813ee42b2c',
-    //redirectUri: window.location.origin, 
+    redirectUri: "http://localhost:5173/login", 
   },
   cache: {
     cacheLocation: 'localStorage', 
@@ -73,6 +73,16 @@ export function getAccount(): AccountInfo | null {
   return msal.getActiveAccount() ?? msal.getAllAccounts()[0] ?? null;
 }
 
+export function getUserRoles(): string[] {
+  const account = getAccount();
+  const claims = account?.idTokenClaims as { roles?: string[] } | undefined;
+  return claims?.roles ?? [];
+}
+
+export function hasRole(role: string): boolean {
+  return getUserRoles().includes(role);
+}
+
 /* ===========================
    Login (popup / redirect)
    =========================== */
@@ -128,6 +138,10 @@ export async function getAccessToken(opts?: {
 }): Promise<string> {
   await initMSAL();
   const account = ensureActiveAccount();
+
+    const roles = getUserRoles()
+
+  console.log(roles)
 
   if (!account) {
     // Sin sesión, fuerza login según modo

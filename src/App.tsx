@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Inicio from "./pages/Inicio";
 import NuestrasMarcas from "./pages/NuestrasMarcas";
@@ -18,19 +18,12 @@ import NewBalance from "./pages/New-balance";
 import Pilatos from "./pages/Pilatos";  
 import Replay from "./pages/Replay"; 
 import Footer from "./components/footer/Footer";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import Login from "./components/auth/Login";
 import Auditoria from "./components/auditoria/Auditoria";
-import AuthPopup from "./pages/AuthPopup";
+import Login from "./components/auth/Login"
+import { ProtectedRoute } from "./components/auth/ProtectedRoute";
+import Unauthorized from "./components/auth/Unauthorized";
 
 function AppRoutes() {
-  useLocation();
-  const isPopupWindow = typeof window !== "undefined" && !!window.opener;
-
-  if (isPopupWindow) {
-    return <AuthPopup />;
-  }
-
   return (
     <>
       <Header />
@@ -51,7 +44,8 @@ function AppRoutes() {
         <Route path="/pilatos" element={<Pilatos/>} />
         <Route path="/replay" element={<Replay/>} />
         <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedRoute />}>
+        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route element={<ProtectedRoute allowedRoles={["auditoria.admin"]}/>}>
           <Route path="/auditoria" element={<Auditoria />} />
         </Route>
         <Route path="/formulario-etica" element={<FormularioEtica />} />

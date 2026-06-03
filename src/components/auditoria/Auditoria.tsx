@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import "./Auditoria.css";
+import React from "react";
+import { supabase } from "../../services/supabase.service";
 
 type AuditStatus = "Cerrado" | "En revision" | "Pendiente";
 
@@ -13,71 +15,46 @@ type AuditRecord = {
   estado: AuditStatus;
 };
 
-const AUDIT_RECORDS: AuditRecord[] = [
-  {
-    id: "AUD-1048",
-    fecha: "2026-06-01",
-    modulo: "Linea etica",
-    evento: "Actualizacion de reporte",
-    usuario: "ana.morales@empresa.com",
-    detalle: "Se adjuntaron soportes y se cambio el estado del caso.",
-    estado: "En revision",
-  },
-  {
-    id: "AUD-1043",
-    fecha: "2026-05-29",
-    modulo: "Formularios",
-    evento: "Creacion de denuncia",
-    usuario: "carlos.ruiz@empresa.com",
-    detalle: "Registro inicial con envio de evidencias.",
-    estado: "Pendiente",
-  },
-  {
-    id: "AUD-1038",
-    fecha: "2026-05-27",
-    modulo: "Microsoft Graph",
-    evento: "Inicio de sesion",
-    usuario: "laura.mejia@empresa.com",
-    detalle: "Acceso autorizado al panel de auditoria.",
-    estado: "Cerrado",
-  },
-  {
-    id: "AUD-1031",
-    fecha: "2026-05-22",
-    modulo: "Notificaciones",
-    evento: "Envio de correo",
-    usuario: "julian.torres@empresa.com",
-    detalle: "Notificacion judicial enviada al destinatario principal.",
-    estado: "Cerrado",
-  },
-  {
-    id: "AUD-1026",
-    fecha: "2026-05-19",
-    modulo: "Linea etica",
-    evento: "Cambio de responsable",
-    usuario: "paula.gomez@empresa.com",
-    detalle: "Se reasigno el seguimiento del caso al equipo legal.",
-    estado: "En revision",
-  },
-];
-
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("es-CO", {
     day: "2-digit",
-    month: "short",
+    month: "2-digit",
     year: "numeric",
-  }).format(new Date(`${date}T00:00:00`));
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date(date));
 }
 
 export default function Auditoria() {
   const [search, setSearch] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [denuncias, setDenuncias] = React.useState<any[]>([])
+
+  React.useEffect(() => {
+    async function getDenuncias() {
+      const { data, error } = await supabase.from('denuncias_form').select()
+      
+      if (error) {
+        console.error("Error fetching denuncias:", error)
+        return
+      }
+
+
+      if (data) {
+        console.log("Denuncias data:", data)
+        setDenuncias(data)
+      }
+    }
+
+    getDenuncias()
+  }, [])  
 
   const filteredRecords = useMemo(() => {
     const term = search.trim().toLowerCase();
 
-    return AUDIT_RECORDS.filter((record) => {
+    return denuncias.filter((record) => {
       const matchesText =
         !term ||
         [record.id, record.modulo, record.evento, record.usuario, record.detalle, record.estado]
@@ -182,35 +159,22 @@ export default function Auditoria() {
             <table className="auditoria__table">
               <thead>
                 <tr>
-                  <th>ID / Evento</th>
-                  <th>Fecha</th>
-                  <th>Modulo</th>
-                  <th>Usuario</th>
-                  <th>Estado</th>
+                  <th>Tipo denuncia</th>
+                  <th>Fecha de denuncia</th>
+                  <th>Denuncia</th>
+                  <th>Nombre</th>
+                  <th>Cedula</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredRecords.length ? (
-                  filteredRecords.map((record) => (
+                {denuncias.length ? (
+                  denuncias.map((record) => (
                     <tr key={record.id}>
-                      <td>
-                        <span className="auditoria__record-title">{record.id}</span>
-                        <span className="auditoria__record-subtitle">
-                          {record.evento}. {record.detalle}
-                        </span>
-                      </td>
-                      <td>{formatDate(record.fecha)}</td>
-                      <td>{record.modulo}</td>
-                      <td>{record.usuario}</td>
-                      <td>
-                        <span
-                          className={`auditoria__badge auditoria__badge--${record.estado
-                            .toLowerCase()
-                            .replace(/\s+/g, "")}`}
-                        >
-                          {record.estado}
-                        </span>
-                      </td>
+                      <td>{record.tipo_denuncia}</td>
+                      <td>{formatDate(record.created_at)}</td>
+                      <td>{record.denuncia}</td>
+                      <td>{record.nombre} {record.apellido}</td>
+                      <td>{record.cedula}</td>
                     </tr>
                   ))
                 ) : (

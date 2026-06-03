@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ensureLoginPopup, getAccessToken } from "../../auth/msal";
 import "./Login.css";
+import { signInWithMicrosoft, supabase } from "./LoginFunction";
+import React from "react";
 
 type LocationState = {
   from?: {
@@ -13,25 +14,72 @@ export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isProcessingRedirect, setIsProcessingRedirect] = useState(false);
   const [error, setError] = useState("");
   const state = location.state as LocationState | null;
   const redirectTo = state?.from?.pathname || "/auditoria";
+  const hasAuthCallbackParams =
+    typeof window !== "undefined" &&
+    /(?:^#|[?#&])(code|error|id_token|access_token)=/i.test(window.location.hash);
+
+  React.useEffect(() => {
+    let cancelled = false;
+
+    const syncSession = async () => {
+      try {
+        if (hasAuthCallbackParams && !cancelled) {
+          setIsProcessingRedirect(true);
+        }
+
+        const { data, error } = await supabase.auth.getSession();
+
+        if (error) throw error;
+        if (cancelled) return;
+
+        if (data.session) {
+          navigate(redirectTo, { replace: true });
+          return;
+        }
+
+        setIsProcessingRedirect(false);
+      } catch (sessionError) {
+        console.error("Error sincronizando sesion con Supabase", sessionError);
+        if (!cancelled) {
+          setIsProcessingRedirect(false);
+        }
+      }
+    };
+
+    void syncSession();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [hasAuthCallbackParams, navigate, redirectTo]);
 
   const handleLogin = async () => {
     setIsSubmitting(true);
     setError("");
 
     try {
-      await ensureLoginPopup();
-      await getAccessToken({ forceSilent: true });
-      navigate(redirectTo, { replace: true });
+      await signInWithMicrosoft()
     } catch (err) {
       console.error("Error iniciando sesion con Graph", err);
       setError("No fue posible iniciar sesion con Microsoft Graph. Intenta de nuevo.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    } 
   };
+
+  if (isProcessingRedirect) {
+    return (
+      <main className="login-screen">
+        <section className="login-card">
+          <p className="login-eyebrow">Microsoft Graph</p>
+          <h1 className="login-title">Completando autenticacion.</h1>
+          <p className="login-copy">Estamos terminando el inicio de sesion y validando tu sesion en esta pagina.</p>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="login-screen">
