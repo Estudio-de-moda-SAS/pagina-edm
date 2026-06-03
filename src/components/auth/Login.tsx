@@ -62,7 +62,7 @@ export default function Login() {
     setError("");
 
     try {
-      await signInWithMicrosoft()
+      await signInWithMicrosoft("https://estudiodemodapage.netlify.app/auditoria")
     } catch (err) {
       console.error("Error iniciando sesion con Graph", err);
       setError("No fue posible iniciar sesion con Microsoft Graph. Intenta de nuevo.");

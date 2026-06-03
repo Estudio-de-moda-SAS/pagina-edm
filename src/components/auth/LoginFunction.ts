@@ -5,12 +5,12 @@ export const supabase = createClient(
   import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 )
 
-export async function signInWithMicrosoft() {
+export async function signInWithMicrosoft(redirectTo?: string) {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'azure',
     options: {
       scopes: 'email',
-      redirectTo: `${window.location.origin}/login`,
+      redirectTo: redirectTo ? `${redirectTo}/login` : `${window.location.origin}/login`,
     },
   })
 
