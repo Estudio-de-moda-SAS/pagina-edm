@@ -86,7 +86,7 @@ export async function uploadFiles(
 export async function sendMail(form: any,) {
 
   //TODO: Poner el nuevo url de funcion envio correos
-  return await fetch('http://localhost:4141/mail/send', {
+  return await fetch('api-envio-correos-bchfaebqdhfcbdgw.canadacentral-01.azurewebsites.net/mail/send', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

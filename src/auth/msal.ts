@@ -8,7 +8,7 @@ export const msal = new PublicClientApplication({
   auth: {
     clientId: '3faf2b1a-8d9c-4081-bc17-37d76cfd94d1', //Produccion
     authority: 'https://login.microsoftonline.com/cd48ecd9-7e15-4f4b-97d9-ec813ee42b2c',
-    redirectUri: "http://localhost:5173/login", 
+    redirectUri: "https://estudiodemodapage.netlify.app/login", 
   },
   cache: {
     cacheLocation: 'localStorage', 
