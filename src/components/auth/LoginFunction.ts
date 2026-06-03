@@ -10,7 +10,7 @@ export async function signInWithMicrosoft(redirectTo?: string) {
     provider: 'azure',
     options: {
       scopes: 'email',
-      redirectTo: redirectTo ? `${redirectTo}/login` : `${window.location.origin}/login`,
+      redirectTo: redirectTo ? `${redirectTo}` : `${window.location.origin}/login`,
     },
   })
 
