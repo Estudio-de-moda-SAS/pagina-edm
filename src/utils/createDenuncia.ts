@@ -116,7 +116,7 @@ export async function sendMail(form: any,) {
       "toRecipients": [
         {
           "emailAddress": {
-            "address": "dpalacios@estudiodemoda.com.co"
+            "address": "lineaetica@estudiodemoda.com.co"
           }
         }
       ]
