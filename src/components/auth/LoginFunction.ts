@@ -6,7 +6,7 @@ export async function signInWithMicrosoft() {
     provider: 'azure',
     options: {
       scopes: 'email',
-      redirectTo: 'http://localhost:5173/',
+      redirectTo: 'https://estudiodemoda.co',
     },
   })
 
