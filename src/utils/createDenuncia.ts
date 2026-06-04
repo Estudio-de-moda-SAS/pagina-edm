@@ -85,12 +85,53 @@ export async function uploadFiles(
 
 export async function sendMail(form: any,) {
 
-  //TODO: Poner el nuevo url de funcion envio correos
-  return await fetch('https://api-envio-correos-bchfaebqdhfcbdgw.canadacentral-01.azurewebsites.net:4141/mail/send', {
+  const mailData = {
+    "senderMail": "alert@estudiodemoda.com.co",
+    "message": {
+      "subject": "Nueva denuncia",
+      "body": {
+        "contentType": "HTML",
+        "content": `
+          <p>Cordial saludo,</p>
+
+          <p>Se ha recibido una nueva denuncia a través del formulario web. A continuación, se relaciona la información registrada por el denunciante:</p>
+
+          <ul>
+            <li><strong>Nombre:</strong> ${form.nombre ?? "Anónimo"}</li>
+            <li><strong>Apellido:</strong> ${form.apellido ?? "Anónimo"}</li>
+            <li><strong>Cédula:</strong> ${form.cedula ?? "Anónimo"}</li>
+            <li><strong>Teléfono:</strong> ${form.telefono ?? "Anónimo"}</li>
+            <li><strong>Correo electrónico:</strong> ${form.correo ?? "Anónimo"}</li>
+            <li><strong>Empleado de la compañía:</strong> ${form.esEmpleado ? "Sí" : "No"}</li>
+          </ul>
+
+          <p><strong>Descripción de la denuncia:</strong></p>
+
+          <p>${form.denuncia}</p>
+
+          <p>Este mensaje fue generado automáticamente por el sistema de denuncias.</p>
+          `
+      },
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "address": "destino@tu-dominio.com"
+          }
+        }
+      ]
+    },
+    "saveToSentItems": true
+  }
+
+  const sended = await fetch('https://api-envio-correos-bchfaebqdhfcbdgw.canadacentral-01.azurewebsites.net/mail/send', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(form),
+    body: JSON.stringify(mailData),
   }) 
+
+  console.log(sended)
+  //TODO: Poner el nuevo url de funcion envio correos
+  return sended
 }
