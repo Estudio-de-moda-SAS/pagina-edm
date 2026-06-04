@@ -85,22 +85,22 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
 
 /* ─── Data ───────────────────────────────────────────────── */
 const BRANDS = [
-  { name: "Pilatos", href: "/pilatos" },
-  { name: "Kipling", href: "/kipling" },
-  { name: "Superdry", href: "/superdry" },
-  { name: "Replay", href: "/replay" },
-  { name: "Girbaud", href: "/girbaud" },
-  { name: "Diesel", href: "/diesel" },
-  { name: "New Balance", href: "/new-balance" },
+  { name: "Pilatos", href: "/#/pilatos" },
+  { name: "Kipling", href: "/#/kipling" },
+  { name: "Superdry", href: "/#/superdry" },
+  { name: "Replay", href: "/#/replay" },
+  { name: "Girbaud", href: "/#/girbaud" },
+  { name: "Diesel", href: "/#/diesel" },
+  { name: "New Balance", href: "/#/new-balance" },
 ];
 
 const LEGAL_LINKS = [
-  { name: "Línea Ética", href: "/linea-etica" },
-  { name: "Notificaciones Judiciales", href: "/notificaciones-judiciales" },
-  { name: "Política de tratamiento de datos", href: "/linea-etica#politica-datos" },
-  { name: "Política de cookies", href: "/politica-cookies" },
-  { name: "Política de protección al denunciante", href: "/proteccion-denunciante" },
-  { name: "Denuncias", href: "/formulario-etica" },
+  { name: "Línea Ética", href: "/#/linea-etica" },
+  { name: "Notificaciones Judiciales", href: "/#/notificaciones-judiciales" },
+  { name: "Política de tratamiento de datos", href: "/#/linea-etica#politica-datos" },
+  { name: "Política de cookies", href: "/#/politica-cookies" },
+  { name: "Política de protección al denunciante", href: "/#/proteccion-denunciante" },
+  { name: "Denuncias", href: "/#/formulario-etica" },
 ];
 
 /* ─── Footer ─────────────────────────────────────────────── */
