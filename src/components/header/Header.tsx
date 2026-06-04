@@ -21,9 +21,9 @@ type NavLinkItem =
 const navLinks: NavLinkItem[] = [
   { label: "Inicio", href: "/" },
   { label: "Nuestras Marcas", type: "dropdown", items: brands },
-  { label: "Linea Ética", href: "/#/linea-etica" },
-  { label: "Nuestra cultura", href: "/#/nuestra-cultura" },
-  { label: "Comunícate con nosotros", href: "/#/comunicate" },
+  { label: "Linea Ética", href: "/linea-etica" },
+  { label: "Nuestra cultura", href: "/nuestra-cultura" },
+  { label: "Comunícate con nosotros", href: "/comunicate" },
 ];
 
 // Rutas adicionales que NO están en el menú pero SÍ en el footer u otros lugares.
