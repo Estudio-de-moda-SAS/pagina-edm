@@ -1,23 +1,17 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { signInWithMicrosoft, supabase } from "./LoginFunction";
+import { signInWithMicrosoft, } from "./LoginFunction";
 import React from "react";
+import { supabase } from "../../services/supabase.service";
 
-type LocationState = {
-  from?: {
-    pathname?: string;
-  };
-};
 
 export default function Login() {
   const navigate = useNavigate();
-  const location = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isProcessingRedirect, setIsProcessingRedirect] = useState(false);
   const [error, setError] = useState("");
-  const state = location.state as LocationState | null;
-  const redirectTo = state?.from?.pathname || "/auditoria";
+  const redirectTo = "/auditoria";
   const hasAuthCallbackParams =
     typeof window !== "undefined" &&
     /(?:^#|[?#&])(code|error|id_token|access_token)=/i.test(window.location.hash);
@@ -33,10 +27,13 @@ export default function Login() {
 
         const { data, error } = await supabase.auth.getSession();
 
+        console.log(data)
+
         if (error) throw error;
         if (cancelled) return;
 
         if (data.session) {
+          console.log("Sesión activa detectada, redirigiendo a:", redirectTo);
           navigate(redirectTo, { replace: true });
           return;
         }

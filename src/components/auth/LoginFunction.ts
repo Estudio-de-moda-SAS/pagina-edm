@@ -1,16 +1,12 @@
-import { createClient } from '@supabase/supabase-js'
+import { supabase } from '../../services/supabase.service'
 
-export const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
-)
 
 export async function signInWithMicrosoft() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'azure',
     options: {
       scopes: 'email',
-      redirectTo: 'https://estudiodemoda.co/#/auditoria',
+      redirectTo: 'http://localhost:5173/',
     },
   })
 

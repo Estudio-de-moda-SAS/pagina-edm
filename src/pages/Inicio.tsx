@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Inicio.css";
 import bannerDesktop from "../assets/nuestra-cultura/banner-landing-nuestra-cultura.png";
 import bannerMobile from "../assets/nuestra-cultura/banner-landing-nuestra-cultura-mob.png";
@@ -11,6 +11,7 @@ import superdryLogo from "../assets/inicio/superdry-store-2.jpg";
 import girbaudLogo from "../assets/inicio/girbaud-store.jpg";
 import kiplingLogo from "../assets/inicio/kiplinh-store.jpg";
 import newBalanceLogo from "../assets/inicio/new-balance-store.jpg";
+import { supabase } from "../services/supabase.service";
 
 // Features de la sección 2
 const features = [
@@ -83,6 +84,7 @@ const brands = [
 export default function Inicio() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const navigate = useNavigate();
 
   // Detectar el slide activo por scroll en mobile
   useEffect(() => {
@@ -107,6 +109,29 @@ export default function Inicio() {
       behavior: "smooth",
     });
   };
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const syncAuthCallback = async () => {
+
+      const { data, error } = await supabase.auth.getSession();
+
+      if (cancelled) return;
+
+      if (!error && data.session) {
+        navigate('/auditoria', { replace: true });
+        return;
+      }
+
+    };
+
+    void syncAuthCallback();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [navigate]);
 
   return (
     <main className="inicio">
