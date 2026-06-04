@@ -284,7 +284,7 @@ export default function Header() {
         <div className="breadcrumb">
           <h1 className="breadcrumb__title">{breadcrumbLabel}</h1>
           <span className="breadcrumb__path">
-            You are here: <NavLink to="/">Home</NavLink> / {breadcrumbLabel}
+            Estas aquí: <NavLink to="/">Home</NavLink> / {breadcrumbLabel}
           </span>
         </div>
       )}
