@@ -77,7 +77,8 @@ export async function uploadFiles(
     const { data: urlData } = supabase.storage
       .from("denuncias-adjuntos")
       .getPublicUrl(path);
-      uploadedFilesUrls.push(urlData.publicUrl);
+      console.log(`✅ Archivo subido: ${file.name} -> ${urlData.publicUrl}`);
+      uploadedFilesUrls.push(path);
   }
 
   return uploadedFilesUrls
@@ -115,7 +116,7 @@ export async function sendMail(form: any,) {
       "toRecipients": [
         {
           "emailAddress": {
-            "address": "destino@tu-dominio.com"
+            "address": "dpalacios@estudiodemoda.com.co"
           }
         }
       ]

@@ -6,7 +6,6 @@
 }
 
 .auditoria__shell {
-  max-width: 1160px;
   margin: 0 auto;
   display: grid;
   gap: 1.5rem;
@@ -173,6 +172,27 @@
   color: #1f2937;
 }
 
+.auditoria__attachments-button {
+  min-height: 40px;
+  border: 1px solid #cfe0f1;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+  padding: 0 1rem;
+  color: #215d8c;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.auditoria__attachments-button:hover,
+.auditoria__attachments-button:focus-visible {
+  border-color: #2196f3;
+  box-shadow: 0 10px 24px rgba(33, 150, 243, 0.16);
+  transform: translateY(-1px);
+}
+
 .auditoria__table tbody tr:hover {
   background: #fbfdff;
 }
@@ -223,6 +243,167 @@
   color: #6b7280;
 }
 
+.auditoria-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.auditoria-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 16, 26, 0.56);
+  backdrop-filter: blur(6px);
+}
+
+.auditoria-modal__content {
+  position: relative;
+  z-index: 1;
+  width: min(880px, 100%);
+  max-height: min(88vh, 880px);
+  overflow: auto;
+  border: 1px solid rgba(232, 237, 243, 0.9);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(33, 150, 243, 0.1), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+  box-shadow: 0 30px 90px rgba(17, 24, 39, 0.24);
+  padding: 2rem;
+}
+
+.auditoria-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: #eff5fb;
+  color: #1d4f78;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.auditoria-modal__close:hover,
+.auditoria-modal__close:focus-visible {
+  background: #dfeefb;
+  transform: scale(1.03);
+}
+
+.auditoria-modal__header {
+  display: grid;
+  gap: 0.8rem;
+  padding-right: 3.25rem;
+}
+
+.auditoria-modal__eyebrow {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2196f3;
+}
+
+.auditoria-modal__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1;
+  color: #101828;
+}
+
+.auditoria-modal__copy {
+  margin: 0;
+  max-width: 56ch;
+  color: #5f6975;
+  line-height: 1.7;
+}
+
+.auditoria-modal__summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.auditoria-modal__summary > div {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #e4edf6;
+}
+
+.auditoria-modal__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6c7480;
+}
+
+.auditoria-modal__list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.auditoria-modal__file {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border-radius: 22px;
+  border: 1px solid #e5edf5;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.auditoria-modal__file-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #eaf5ff 0%, #d7ebfb 100%);
+  color: #1567a9;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.auditoria-modal__file-body h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #101828;
+}
+
+.auditoria-modal__file-body p {
+  margin: 0.3rem 0 0;
+  color: #667085;
+  line-height: 1.55;
+}
+
+.auditoria-modal__file-action {
+  min-height: 42px;
+  border: 0;
+  border-radius: 999px;
+  background: #0f172a;
+  padding: 0 1rem;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 @media (max-width: 900px) {
   .auditoria__stats {
     grid-template-columns: 1fr;
@@ -230,6 +411,15 @@
 
   .auditoria__filters {
     grid-template-columns: 1fr;
+  }
+
+  .auditoria-modal__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .auditoria-modal__file {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 }
 
@@ -246,5 +436,18 @@
 
   .auditoria__title {
     max-width: none;
+  }
+
+  .auditoria-modal {
+    padding: 1rem;
+  }
+
+  .auditoria-modal__content {
+    padding: 1.25rem;
+    border-radius: 24px;
+  }
+
+  .auditoria-modal__header {
+    padding-right: 2.75rem;
   }
 }

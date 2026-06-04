@@ -1,7 +1,8 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import "./Auditoria.css";
 import React from "react";
 import { supabase } from "../../services/supabase.service";
+import AttachmentsModal from "./Attachments/Attachments";
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("es-CO", {
@@ -15,10 +16,8 @@ function formatDate(date: string) {
 }
 
 export default function Auditoria() {
-  const [search, setSearch] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
   const [denuncias, setDenuncias] = React.useState<any[]>([])
+  const [selectedRecord, setSelectedRecord] = useState<any | null>(null);
 
   React.useEffect(() => {
     async function getDenuncias() {
@@ -39,34 +38,6 @@ export default function Auditoria() {
     getDenuncias()
   }, [])  
 
-  const filteredRecords = useMemo(() => {
-    const term = search.trim().toLowerCase();
-
-    return denuncias.filter((record) => {
-      const matchesText =
-        !term ||
-        [record.id, record.modulo, record.evento, record.usuario, record.detalle, record.estado]
-          .join(" ")
-          .toLowerCase()
-          .includes(term);
-
-      const matchesStart = !startDate || record.fecha >= startDate;
-      const matchesEnd = !endDate || record.fecha <= endDate;
-
-      return matchesText && matchesStart && matchesEnd;
-    });
-  }, [endDate, search, startDate]);
-
-  const stats = useMemo(() => {
-    const pending = filteredRecords.filter((record) => record.estado === "Pendiente").length;
-    const reviewing = filteredRecords.filter((record) => record.estado === "En revision").length;
-
-    return {
-      total: filteredRecords.length,
-      pending,
-      reviewing,
-    };
-  }, [filteredRecords]);
 
   return (
     <main className="auditoria">
@@ -75,70 +46,6 @@ export default function Auditoria() {
           <div>
             <p className="auditoria__eyebrow">Panel protegido</p>
             <h1 className="auditoria__title">Auditoria operativa.</h1>
-          </div>
-          <p className="auditoria__copy">
-            Consulta movimientos recientes, filtra por fecha o texto y mantén una vista clara del
-            seguimiento en los procesos clave de la aplicación.
-          </p>
-
-          <div className="auditoria__stats">
-            <article className="auditoria__stat">
-              <span className="auditoria__stat-label">Registros visibles</span>
-              <span className="auditoria__stat-value">{stats.total}</span>
-            </article>
-            <article className="auditoria__stat">
-              <span className="auditoria__stat-label">Pendientes</span>
-              <span className="auditoria__stat-value">{stats.pending}</span>
-            </article>
-            <article className="auditoria__stat">
-              <span className="auditoria__stat-label">En revision</span>
-              <span className="auditoria__stat-value">{stats.reviewing}</span>
-            </article>
-          </div>
-        </section>
-
-        <section className="auditoria__panel">
-          <div className="auditoria__filters">
-            <div className="auditoria__field">
-              <label htmlFor="audit-search">Buscar por texto</label>
-              <input
-                id="audit-search"
-                className="auditoria__input"
-                type="text"
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder="ID, modulo, usuario o detalle"
-              />
-            </div>
-
-            <div className="auditoria__field">
-              <label htmlFor="audit-start-date">Fecha desde</label>
-              <input
-                id="audit-start-date"
-                className="auditoria__input"
-                type="date"
-                value={startDate}
-                onChange={(event) => setStartDate(event.target.value)}
-              />
-            </div>
-
-            <div className="auditoria__field">
-              <label htmlFor="audit-end-date">Fecha hasta</label>
-              <input
-                id="audit-end-date"
-                className="auditoria__input"
-                type="date"
-                value={endDate}
-                onChange={(event) => setEndDate(event.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="auditoria__chips" aria-label="Resumen de filtros">
-            <span className="auditoria__chip">Resultados: {filteredRecords.length}</span>
-            <span className="auditoria__chip">Texto: {search.trim() || "Todos"}</span>
-            <span className="auditoria__chip">Desde: {startDate || "Sin limite"}</span>
-            <span className="auditoria__chip">Hasta: {endDate || "Sin limite"}</span>
           </div>
         </section>
 
@@ -149,9 +56,12 @@ export default function Auditoria() {
                 <tr>
                   <th>Tipo denuncia</th>
                   <th>Fecha de denuncia</th>
-                  <th>Denuncia</th>
-                  <th>Nombre</th>
                   <th>Cedula</th>
+                  <th>Nombre</th>
+                  <th>Teléfono</th>
+                  <th>Correo electónico</th>
+                  <th>Denuncia</th>
+                  <th>Adjuntos</th>
                 </tr>
               </thead>
               <tbody>
@@ -160,14 +70,27 @@ export default function Auditoria() {
                     <tr key={record.id}>
                       <td>{record.tipo_denuncia}</td>
                       <td>{formatDate(record.created_at)}</td>
-                      <td>{record.denuncia}</td>
-                      <td>{record.nombre} {record.apellido}</td>
-                      <td>{record.cedula}</td>
+                      <td>{record.cedula ?? "Anonimo"}</td>
+                      <td>{record.nombre ?? "Anonimo"} {record.apellido}</td>
+                      <td>{record.telefono ?? "Anonimo"} </td>
+                      <td>{record.correo ?? "Anonimo"}</td>
+                      <td>{record.denuncia}</td>  
+                      <td>
+                        {record.adjuntos_path?.length > 0 && record.adjuntos_path !== "[]" ?
+                          <button
+                            type="button"
+                            className="auditoria__attachments-button"
+                            onClick={() => setSelectedRecord(record)}
+                          >
+                            Ver adjuntos
+                          </button> : "Sin adjuntos"
+                        }
+                      </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={5} className="auditoria__empty">
+                    <td colSpan={6} className="auditoria__empty">
                       No hay registros que coincidan con los filtros actuales.
                     </td>
                   </tr>
@@ -177,6 +100,10 @@ export default function Auditoria() {
           </div>
         </section>
       </div>
+
+      {selectedRecord ? (
+        <AttachmentsModal selectedRecord={selectedRecord} onClose={() => setSelectedRecord(null)}/>
+      ) : null}
     </main>
   );
 }
