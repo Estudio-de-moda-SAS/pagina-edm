@@ -4,13 +4,13 @@ import "./Header.css";
 
 // Marcas para el dropdown "Nuestras Marcas"
 const brands = [
-  { name: "Pilatos", href: "/pilatos" },
-  { name: "Kipling", href: "/kipling" },
-  { name: "Superdry", href: "/superdry" },
-  { name: "Replay", href: "/replay" },
-  { name: "Girbaud", href: "/girbaud" },
-  { name: "Diesel", href: "/diesel" },
-  { name: "New Balance", href: "/new-balance" },
+  { name: "Pilatos", href: "/#/pilatos" },
+  { name: "Kipling", href: "/#/kipling" },
+  { name: "Superdry", href: "/#/superdry" },
+  { name: "Replay", href: "/#/replay" },
+  { name: "Girbaud", href: "/#/girbaud" },
+  { name: "Diesel", href: "/#/diesel" },
+  { name: "New Balance", href: "/#/new-balance" },
 ];
 
 // Tipo de link: navegable o dropdown
@@ -28,11 +28,11 @@ const navLinks: NavLinkItem[] = [
 
 // Rutas adicionales que NO están en el menú pero SÍ en el footer u otros lugares.
 const extraRoutes: Record<string, string> = {
-  "/notificaciones-judiciales": "Notificaciones Judiciales",
-  "/politica-cookies": "Política de Cookies",
-  "/proteccion-denunciante": "Política de Protección al Denunciante",
-  "/politica-datos": "Política de Tratamiento de Datos",
-  "/formulario-etica": "Denuncias",
+  "/#/notificaciones-judiciales": "Notificaciones Judiciales",
+  "/#/politica-cookies": "Política de Cookies",
+  "/#/proteccion-denunciante": "Política de Protección al Denunciante",
+  "/#/politica-datos": "Política de Tratamiento de Datos",
+  "/#/formulario-etica": "Denuncias",
 };
 
 const slugToLabel = (path: string): string => {
@@ -284,7 +284,7 @@ export default function Header() {
         <div className="breadcrumb">
           <h1 className="breadcrumb__title">{breadcrumbLabel}</h1>
           <span className="breadcrumb__path">
-            You are here: <NavLink to="/">Home</NavLink> / {breadcrumbLabel}
+            Estas aquí: <NavLink to="/">Home</NavLink> / {breadcrumbLabel}
           </span>
         </div>
       )}

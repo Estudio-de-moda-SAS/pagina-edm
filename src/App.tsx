@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter , Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Inicio from "./pages/Inicio";
 import NuestrasMarcas from "./pages/NuestrasMarcas";
@@ -40,7 +40,7 @@ function AppRoutes() {
            <Route path="/girbaud" element={<Girbaud/>} />
            <Route path="/superdry" element={<Superdry/>} />
            <Route path="/kipling" element={<Kipling/>} />
-        <Route path="/New-balance" element={<NewBalance/>} />
+        <Route path="/new-balance" element={<NewBalance/>} />
         <Route path="/pilatos" element={<Pilatos/>} />
         <Route path="/replay" element={<Replay/>} />
         <Route path="/login" element={<Login />} />
@@ -58,9 +58,9 @@ function AppRoutes() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter >
       <AppRoutes />
-    </BrowserRouter>
+    </HashRouter >
   );
 }
 
