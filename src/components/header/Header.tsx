@@ -206,7 +206,7 @@ export default function Header() {
 
         <NavLink to="/" className="drawer__logo">
           <img
-            src="https://estudiodemoda.co/wp-content/uploads/2023/01/Logo-colores_0-15-1-1.png"
+           src={logopagina}
             alt="Estudio de Moda"
           />
         </NavLink>
