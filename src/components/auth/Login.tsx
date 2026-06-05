@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { signInWithMicrosoft, } from "./LoginFunction";
+import { signInWithMicrosoft } from "./LoginFunction";
 import React from "react";
 import { supabase } from "../../services/supabase.service";
-
+import {
+  clearPostLoginRedirectPending,
+  consumePostLoginRedirectPending,
+  hasPostLoginRedirectPending,
+} from "../../utils/postLoginRedirect";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,28 +16,29 @@ export default function Login() {
   const [isProcessingRedirect, setIsProcessingRedirect] = useState(false);
   const [error, setError] = useState("");
   const redirectTo = "/auditoria";
+  const shouldRedirectAfterLogin = hasPostLoginRedirectPending();
   const hasAuthCallbackParams =
     typeof window !== "undefined" &&
-    /(?:^#|[?#&])(code|error|id_token|access_token)=/i.test(window.location.hash);
+    /(?:^#|[?#&])(code|error|id_token|access_token)=/i.test(
+      `${window.location.search}${window.location.hash}`,
+    );
 
   React.useEffect(() => {
     let cancelled = false;
 
     const syncSession = async () => {
       try {
-        if (hasAuthCallbackParams && !cancelled) {
+        if ((hasAuthCallbackParams || shouldRedirectAfterLogin) && !cancelled) {
           setIsProcessingRedirect(true);
         }
 
         const { data, error } = await supabase.auth.getSession();
 
-        console.log(data)
-
         if (error) throw error;
         if (cancelled) return;
 
-        if (data.session) {
-          console.log("Sesión activa detectada, redirigiendo a:", redirectTo);
+        if (data.session && shouldRedirectAfterLogin) {
+          consumePostLoginRedirectPending();
           navigate(redirectTo, { replace: true });
           return;
         }
@@ -52,18 +57,20 @@ export default function Login() {
     return () => {
       cancelled = true;
     };
-  }, [hasAuthCallbackParams, navigate, redirectTo]);
+  }, [hasAuthCallbackParams, navigate, redirectTo, shouldRedirectAfterLogin]);
 
   const handleLogin = async () => {
     setIsSubmitting(true);
     setError("");
 
     try {
-      await signInWithMicrosoft()
+      await signInWithMicrosoft();
     } catch (err) {
       console.error("Error iniciando sesion con Graph", err);
+      clearPostLoginRedirectPending();
       setError("No fue posible iniciar sesion con Microsoft Graph. Intenta de nuevo.");
-    } 
+      setIsSubmitting(false);
+    }
   };
 
   if (isProcessingRedirect) {
@@ -93,7 +100,7 @@ export default function Login() {
           </button>
         </div>
 
-        <p className="login-note">Si ya tienes una sesion activa, el acceso se completara automaticamente.</p>
+        <p className="login-note">Si ya tienes una sesion activa, puedes seguir navegando sin redireccion automatica.</p>
         {error ? <p className="login-error">{error}</p> : null}
       </section>
     </main>
