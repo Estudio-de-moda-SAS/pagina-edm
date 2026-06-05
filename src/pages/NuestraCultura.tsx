@@ -3,40 +3,54 @@ import "./NuestraCultura.css";
 import bannerDesktop from "../assets/nuestra-cultura/banner-landing-nuestra-cultura.png";
 import bannerMobile from "../assets/nuestra-cultura/banner-landing-nuestra-cultura-mob.png";
 
-// Imágenes de la galería "El equipo en imágenes"
+import atributosimg from "../assets/nuestra-cultura/Atributos.png";
+import beneficiosimg from "../assets/nuestra-cultura/Beneficios.png";
+import trabajaconimg from "../assets/nuestra-cultura/Trabaja-con-nosotros.png";
+
+//equipo
+
+
+import equipouno from "../assets/nuestra-cultura/equipo-uno.jpeg";
+import equipodos from "../assets/nuestra-cultura/equipo-dos.jpeg";
+import equipotres from "../assets/nuestra-cultura/equipo-tres.jpeg";
+import equipocuatro from "../assets/nuestra-cultura/equipo-cuatro.jpeg";
+import equipocinco from "../assets/nuestra-cultura/equipo-cinco.jpeg";
+import equiposeis from "../assets/nuestra-cultura/equipo-seis.jpeg";
+import equiposiete from "../assets/nuestra-cultura/equipo-siete.jpeg";
+import equipoocho from "../assets/nuestra-cultura/equipo-ocho.jpeg";
+
+
 const galleryImages = [
-  // Las primeras 4 son las visibles en el grid
   {
-    src: "https://estudiodemoda.co/wp-content/uploads/2023/07/DSC01251-1365x2048.jpg",
+    src: equipouno,
     alt: "Equipo Estudio de Moda - Imagen 1",
   },
   {
-    src: "https://estudiodemoda.co/wp-content/uploads/2023/07/LANZAMIENTO-DIESEL.jpg",
+    src: equipodos,
     alt: "Lanzamiento Diesel",
   },
   {
-    src: "https://estudiodemoda.co/wp-content/uploads/2023/07/CINE-768x871.jpg",
+    src: equipotres,
     alt: "Equipo en cine",
   },
   {
-    src: "https://estudiodemoda.co/wp-content/uploads/2023/07/RITVALES.jpg",
+    src: equipocuatro,
     alt: "Equipo en RITVALES",
   },
-  // Estas se ven solo al abrir el carrusel
   {
-    src: "https://estudiodemoda.co/wp-content/uploads/2023/07/JZ--1024x1000.jpg",
+    src: equipocinco,
     alt: "Equipo en evento JZ",
   },
   {
-    src: "https://estudiodemoda.co/wp-content/uploads/2023/07/1feliz-2048x1365.jpg",
+    src: equiposeis,
     alt: "Momentos felices del equipo",
   },
   {
-    src: "https://estudiodemoda.co/wp-content/uploads/2023/07/3felizcide-2048x1365.jpg",
+    src: equiposiete,
     alt: "Celebración del equipo",
   },
   {
-    src: "https://estudiodemoda.co/wp-content/uploads/2023/07/DSC01143-scaled.jpg",
+    src: equipoocho,
     alt: "Equipo Estudio de Moda",
   },
 ];
@@ -269,34 +283,53 @@ const beneficios = [
 // Atributos para el modal de "Atributos EDM"
 const atributos = [
   {
-    icon: "https://estudiodemoda.co/wp-content/uploads/2023/08/FELICES-.jpg",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402C1 3.539 4.068 2 6.281 2c1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447C20.266 2 23 3.968 23 7.191c0 4.105-5.571 8.864-11 14.402z"/>
+      </svg>
+    ),
     title: "Felices",
-    description:
-      "Transmitimos una calidad humana única gracias a que hacemos lo que más nos gusta.",
+    description: "Transmitimos una calidad humana única gracias a que hacemos lo que más nos gusta.",
   },
   {
-    icon: "https://estudiodemoda.co/wp-content/uploads/2023/08/APASIONADOS.jpg",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+    ),
     title: "Apasionados",
-    description:
-      "Vibramos de energía contagiosa por todo lo que hacemos y emprendemos.",
+    description: "Vibramos de energía contagiosa por todo lo que hacemos y emprendemos.",
   },
   {
-    icon: "https://estudiodemoda.co/wp-content/uploads/2023/08/CREATIVOS.jpg",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="2"/>
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+      </svg>
+    ),
     title: "Creativos",
-    description:
-      "Buscamos formas diferentes de hacer las cosas, sea innovando o rompiendo paradigmas.",
+    description: "Buscamos formas diferentes de hacer las cosas, sea innovando o rompiendo paradigmas.",
   },
   {
-    icon: "https://estudiodemoda.co/wp-content/uploads/2023/08/AUTENTICOS.jpg",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    ),
     title: "Auténticos",
-    description:
-      "Trabajamos sin ser juzgados, sintiéndonos incluidos, y con libertad de expresarnos y dar opiniones.",
+    description: "Trabajamos sin ser juzgados, sintiéndonos incluidos, y con libertad de expresarnos y dar opiniones.",
   },
   {
-    icon: "https://estudiodemoda.co/wp-content/uploads/2023/08/LEALES.jpg",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+    ),
     title: "Leales",
-    description:
-      "Somos honestos y responsables con la empresa, sus marcas, y siempre al servicio nuestros clientes.",
+    description: "Somos honestos y responsables con la empresa, sus marcas, y siempre al servicio nuestros clientes.",
   },
 ];
 
@@ -305,7 +338,7 @@ const cards = [
   {
     id: "atributos",
     title: "Atributos EDM",
-    image: "https://estudiodemoda.co/wp-content/uploads/2023/07/CH-atributos-mobile.jpg",
+    image: atributosimg,
     hideImageInModal: true,
     content: (
       <>
@@ -326,24 +359,24 @@ const cards = [
           Nuestros atributos
         </h3>
 
-        <ul className="atributos-grid">
-          {atributos.map((attr) => (
-            <li key={attr.title} className="atributo">
-              <div className="atributo__icon-wrapper">
-                <img src={attr.icon} alt="" className="atributo__icon" />
-              </div>
-              <h4 className="atributo__title">{attr.title}</h4>
-              <p className="atributo__description">{attr.description}</p>
-            </li>
-          ))}
-        </ul>
+       <ul className="atributos-grid">
+  {atributos.map((attr) => (
+    <li key={attr.title} className="atributo">
+      <div className="atributo__icon-wrapper">
+        {attr.icon}
+      </div>
+      <h4 className="atributo__title">{attr.title}</h4>
+      <p className="atributo__description">{attr.description}</p>
+    </li>
+  ))}
+</ul>
       </>
     ),
   },
   {
     id: "beneficios",
     title: "Beneficios EDM",
-    image: "https://estudiodemoda.co/wp-content/uploads/2023/07/CH-beneficios-desk.jpg",
+    image: beneficiosimg ,
     hideImageInModal: true,
     content: (
       <>
@@ -386,7 +419,7 @@ const cards = [
   {
     id: "trabaja",
     title: "Trabaja con nosotros",
-    image: "https://estudiodemoda.co/wp-content/uploads/2023/07/CH-trabaja-con-nosotros-desk.jpg",
+    image: trabajaconimg,
     hideImageInModal: true,
     content: (
       <>

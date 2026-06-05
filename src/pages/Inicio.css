@@ -186,7 +186,7 @@
 .etica-home__image-wrapper {
   width: 100%;
   max-width: 360px;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 5;
   overflow: hidden;
   background-color: #f0f0f0;
 }
@@ -396,7 +396,7 @@
   }
 
   .etica-home__image-wrapper {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 4;
     max-width: 500px;
     margin: 0 auto;
   }

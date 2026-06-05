@@ -1,5 +1,22 @@
 import { useState } from "react";
 import "./LineaEtica.css";
+import lineaEticaImg from "../assets/linea etica/Línea-etica.png";
+import sangrilaft from "../assets/linea etica/Sagrilaft.png";
+import tratamientoDatos from "../assets/linea etica/Tratamiento-datos.png";
+import politicaanti from "../assets/linea etica/Política.png";
+import codigo from "../assets/linea etica/Codigo.png";
+import compromiso from "../assets/linea etica/Compromiso.png";
+
+
+// PDF
+
+import sangrilaftpdf from "../assets/pdf/MA_Sagrilaft_Estudio_de_Moda_SAS.pdf";
+import tratamientoDatospdf from "../assets/pdf/PL-Politica-de-Tratamiento-de-Datos.pdf";
+import politicaantipdf from "../assets/pdf/PL-Politica-Antisoborno-y-Anticorrupcion.pdf";
+import codigopdf from "../assets/pdf/PL-Codigo-de-Etica.pdf";
+import compromisopdf from "../assets/pdf/compromiso-de-alta-direccion.pdf";
+
+
 
 export default function LineaEtica() {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,7 +127,7 @@ export default function LineaEtica() {
           {/* Columna derecha: imagen */}
           <div className="linea-etica__image-wrapper">
             <img
-              src="https://estudiodemoda.co/wp-content/uploads/2023/03/LINEA-ETICA.jpg"
+              src={lineaEticaImg}
               alt="Linea Ética EDM"
               className="linea-etica__image"
             />
@@ -132,7 +149,7 @@ export default function LineaEtica() {
 
             <div className="sagrilaft__image-frame">
               <img
-                src="https://estudiodemoda.co/wp-content/uploads/2023/03/politica-sacri.png"
+                src={sangrilaft}
                 alt="Política Sagrilaft - Equipo de Estudio de Moda"
                 className="sagrilaft__image"
               />
@@ -148,7 +165,7 @@ export default function LineaEtica() {
             </p>
 
             <a
-              href="https://estudiodemoda.co/wp-content/uploads/2023/03/MANUAL-DE-SACRILAFT.pdf"
+              href={sangrilaftpdf}
               target="_blank"
               rel="noopener noreferrer"
               className="sagrilaft__button"
@@ -206,7 +223,7 @@ export default function LineaEtica() {
             </p>
 
             <a
-              href="https://estudiodemoda.co/wp-content/uploads/2025/01/PDTDP.pdf"
+              href={tratamientoDatospdf}
               target="_blank"
               rel="noopener noreferrer"
               className="sagrilaft__button"
@@ -256,7 +273,7 @@ export default function LineaEtica() {
 
             <div className="sagrilaft__image-frame">
               <img
-                src="https://estudiodemoda.co/wp-content/uploads/2023/03/politica-tratamiento-de-dtos.png"
+                src={tratamientoDatos}
                 alt="Política de Tratamiento de Datos Personales - Equipo de Estudio de Moda"
                 className="sagrilaft__image"
               />
@@ -274,7 +291,7 @@ export default function LineaEtica() {
           <div className="sagrilaft__image-wrapper sagrilaft__image-wrapper--clean">
             <div className="sagrilaft__image-frame">
               <img
-                src="https://estudiodemoda.co/wp-content/uploads/2023/07/politica-transparenciayetica-1024x893.png"
+                src={politicaanti}
                 alt="Política de Transparencia y Ética Empresarial - Estudio de Moda"
                 className="sagrilaft__image sagrilaft__image--contain"
               />
@@ -301,7 +318,7 @@ export default function LineaEtica() {
             </p>
 
             <a
-              href="https://estudiodemoda.co/wp-content/uploads/2024/04/nPL-Codigo-de-Etica-22-04_compressed.pdf"
+              href={politicaantipdf}
               target="_blank"
               rel="noopener noreferrer"
               className="sagrilaft__button"
@@ -347,7 +364,6 @@ export default function LineaEtica() {
 
       {/* ============================================
           SECCIÓN 5 — Código de Ética y Buen Gobierno
-          (texto izquierda, imagen derecha)
           ============================================ */}
       <section className="sagrilaft sagrilaft--reverse">
         <div className="sagrilaft__grid">
@@ -368,7 +384,7 @@ export default function LineaEtica() {
             </p>
 
             <a
-              href="https://estudiodemoda.co/wp-content/uploads/2024/04/nPL-Codigo-de-Etica-22-04_compressed.pdf"
+              href={codigopdf}
               target="_blank"
               rel="noopener noreferrer"
               className="sagrilaft__button"
@@ -414,7 +430,7 @@ export default function LineaEtica() {
           <div className="sagrilaft__image-wrapper sagrilaft__image-wrapper--clean">
             <div className="sagrilaft__image-frame">
               <img
-                src="https://estudiodemoda.co/wp-content/uploads/2023/07/codigo-etica-buen-gobierno-1024x940.png"
+                src={codigo}
                 alt="Código de Ética y Buen Gobierno - Estudio de Moda"
                 className="sagrilaft__image sagrilaft__image--contain"
               />
@@ -425,15 +441,14 @@ export default function LineaEtica() {
 
       {/* ============================================
           SECCIÓN 6 — Compromiso de la Alta Dirección
-          (imagen izquierda, texto derecha)
-          ============================================ */}
+         ============================================ */}
       <section className="sagrilaft">
         <div className="sagrilaft__grid">
           {/* Columna izquierda: imagen */}
           <div className="sagrilaft__image-wrapper sagrilaft__image-wrapper--clean sagrilaft__image-wrapper--wide">
             <div className="sagrilaft__image-frame">
               <img
-                src="https://estudiodemoda.co/wp-content/uploads/2023/12/Captura-de-Pantalla-2023-12-27-a-las-8.41.44-a.-m-1024x653.png"
+                src={compromiso}
                 alt="Compromiso de la Alta Dirección - Estudio de Moda"
                 className="sagrilaft__image sagrilaft__image--contain"
               />
@@ -451,7 +466,7 @@ export default function LineaEtica() {
             </p>
 
             <a
-              href="https://estudiodemoda.co/wp-content/uploads/2023/12/COMPROMISO-ALTA-GESTION-comprimido.pdf"
+              href={compromisopdf}
               target="_blank"
               rel="noopener noreferrer"
               className="sagrilaft__button"

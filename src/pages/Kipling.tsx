@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./Kipling.css";
 import adnImage from "../assets/marcas/nuestro-adn-kipling.png";
+import tiendakipling from "../assets/marcas/Kipling.png";
 
-const STORE_IMAGE =
-  "https://estudiodemoda.co/wp-content/uploads/2023/02/kiplinh-store-1024x682.jpg";
+const STORE_IMAGE = tiendakipling;
 
 // Pilares de Kipling
 const pilares = [
