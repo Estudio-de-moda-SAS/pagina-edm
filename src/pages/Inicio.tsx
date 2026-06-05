@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Inicio.css";
 import bannerDesktop from "../assets/nuestra-cultura/banner-landing-nuestra-cultura.png";
 import bannerMobile from "../assets/nuestra-cultura/banner-landing-nuestra-cultura-mob.png";
-
+import lineaEticaImg from "../assets/linea etica/Línea-etica.png";
 // Logos de marcas
 import pilatosLogo from "../assets/inicio/pilatos-store.jpg";
 import dieselLogo from "../assets/inicio/diesel-colombia-tienda.jpeg";
@@ -231,7 +231,7 @@ export default function Inicio() {
           {/* Imagen */}
           <div className="etica-home__image-wrapper">
             <img
-              src="https://estudiodemoda.co/wp-content/uploads/2023/03/LINEA-ETICA.jpg"
+              src={lineaEticaImg}
               alt="Equipo de Estudio de Moda celebrando"
               className="etica-home__image"
               loading="lazy"

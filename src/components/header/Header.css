@@ -21,7 +21,7 @@
 }
 
 .header__logo-img {
-  width: 100px;
+  width: 80px;
 
 }
 
@@ -417,4 +417,8 @@
   .breadcrumb__path {
     font-size: 12px;
   }
+
+  .drawer__logo {
+justify-content: center;
+}
 }

@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import logopagina from "../../assets/header/EDM-Logo-1.png";
+
 import "./Header.css";
 
 // Marcas para el dropdown "Nuestras Marcas"
@@ -104,7 +106,7 @@ export default function Header() {
         {/* Logo — centrado en mobile */}
         <NavLink to="/" className="header__logo">
           <img
-            src="https://estudiodemoda.co/wp-content/uploads/2023/01/Logo-colores_0-15-1-1.png"
+            src={logopagina}
             alt="Estudio de Moda logo"
             className="header__logo-img"
           />
@@ -204,7 +206,7 @@ export default function Header() {
 
         <NavLink to="/" className="drawer__logo">
           <img
-            src="https://estudiodemoda.co/wp-content/uploads/2023/01/Logo-colores_0-15-1-1.png"
+           src={logopagina}
             alt="Estudio de Moda"
           />
         </NavLink>

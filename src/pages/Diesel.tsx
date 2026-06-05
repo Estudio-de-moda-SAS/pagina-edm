@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./Diesel.css";
 import adnImage from "../assets/marcas/nuestro-adn.png";
+import tiendadiesel from "../assets/marcas/Diesel.png";
 
-const HERO_IMAGE =
-  "https://estudiodemoda.co/wp-content/uploads/2023/02/diesel-colombia-tienda-1536x836.jpeg";
+const HERO_IMAGE = tiendadiesel;
 
 // Pilares de Diesel
 const pilares = [

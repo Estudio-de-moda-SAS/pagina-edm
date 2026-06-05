@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./New-balance.css";
 import adnImage from "../assets/marcas/nuestro-adn-new-balance.png";
+import tiendanewbalfrom from "../assets/marcas/New-Balance.png";
 
-const STORE_IMAGE =
-  "https://estudiodemoda.co/wp-content/uploads/2023/02/new-balance-store.jpg";
+const STORE_IMAGE = tiendanewbalfrom;
 
 // Pilares de New Balance
 const pilares = [

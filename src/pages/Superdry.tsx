@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./Superdry.css";
 import adnImage from "../assets/marcas/nuestro-adn-superdry.png";
+import tiendasuperdry from "../assets/marcas/Superdry.png";
 
-const STORE_IMAGE =
-  "https://estudiodemoda.co/wp-content/uploads/2023/02/superdry-store-2.jpg";
+const STORE_IMAGE = tiendasuperdry;
 
 // Pilares de Superdry
 const pilares = [
