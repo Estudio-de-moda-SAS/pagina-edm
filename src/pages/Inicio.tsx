@@ -12,6 +12,7 @@ import girbaudLogo from "../assets/inicio/girbaud-store.jpg";
 import kiplingLogo from "../assets/inicio/kiplinh-store.jpg";
 import newBalanceLogo from "../assets/inicio/new-balance-store.jpg";
 import { supabase } from "../services/supabase.service";
+import { consumePostLoginRedirectPending, hasPostLoginRedirectPending } from "../utils/postLoginRedirect";
 
 // Features de la sección 2
 const features = [
@@ -85,6 +86,7 @@ export default function Inicio() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const navigate = useNavigate();
+  const shouldRedirectAfterLogin = hasPostLoginRedirectPending();
 
   // Detectar el slide activo por scroll en mobile
   useEffect(() => {
@@ -114,16 +116,14 @@ export default function Inicio() {
     let cancelled = false;
 
     const syncAuthCallback = async () => {
-
       const { data, error } = await supabase.auth.getSession();
 
       if (cancelled) return;
 
-      if (!error && data.session) {
+      if (!error && data.session && shouldRedirectAfterLogin) {
+        consumePostLoginRedirectPending();
         navigate('/auditoria', { replace: true });
-        return;
       }
-
     };
 
     void syncAuthCallback();
@@ -131,7 +131,7 @@ export default function Inicio() {
     return () => {
       cancelled = true;
     };
-  }, [navigate]);
+  }, [navigate, shouldRedirectAfterLogin]);
 
   return (
     <main className="inicio">
