@@ -7,13 +7,13 @@ const CONTACT = {
   whatsappNumber: "+57 321 528 2745",
   phone: "(604) 6073227",
   phoneRaw: "+576046073227",
-  address: "Edificio 35 Palms, Carrera 35, Av. Las Palmas #15b 143",
-  city: "El Poblado, Medellín, Antioquia",
+  address: "Calle 16 #55 – 129 Oficina 302",
+  city: "Medellín, Antioquia",
   mapsUrl:
-    "https://www.google.com/maps/place/Edificio+35+Palms/@6.2167339,-75.5646648,17z/data=!3m1!4b1!4m6!3m5!1s0x8e4429df1e8c7faf:0x1b630ea0dda803c4!8m2!3d6.2167339!4d-75.5646648!16s%2Fg%2F11h585nx3h",
+    "https://www.google.com/maps/place/Cl.+16+%2355-129,+Guayabal,+Medell%C3%ADn,+Guayabal,+Medell%C3%ADn,+Antioquia/@6.2191063,-75.5861898,17z/data=!3m1!4b1!4m6!3m5!1s0x8e4429cfc889f7c1:0x364f6ff3032295d!8m2!3d6.219101!4d-75.5836149!16s%2Fg%2F11fklh9864?entry=ttu&g_ep=EgoyMDI2MDkwMi4wIKXMDSoASAFQAw%3D%3D",
   // URL para iframe embebido (basado en las coordenadas)
   mapsEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7775!2d-75.56466482473!3d6.21673393937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4429df1e8c7faf%3A0x1b630ea0dda803c4!2sEdificio%2035%20Palms!5e0!3m2!1ses!2sco!4v1700000000000",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.337817944866!2d-75.58618982418416!3d6.219106326624057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4429cfc889f7c1%3A0x364f6ff3032295d!2sCl.%2016%20%2355-129%2C%20Guayabal%2C%20Medell%C3%ADn%2C%20Guayabal%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses-419!2sco!4v1788984958040!5m2!1ses-419!2sco",
 };
 
 // Datos legales para Notificaciones Judiciales
@@ -22,7 +22,7 @@ const LEGAL = {
   nit: "890.927.803-1",
   telefono: "(604) 6054040",
   telefonoRaw: "+576046054040",
-  direccion: "Carrera 35 # 15 B 143, Piso 9, Edificio 35 Palms, Medellín-Antioquia",
+  direccion: "Calle 16 #55 – 129 Oficina 302",
   email: "edmgeneral@estudiodemoda.com.co",
 };
 

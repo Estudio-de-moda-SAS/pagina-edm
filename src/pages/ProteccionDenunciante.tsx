@@ -1,7 +1,7 @@
 import "./ProteccionDenunciante.css";
 
 const PDF_URL =
-  "https://estudiodemoda.co/wp-content/uploads/2024/01/Proteccion-al-denunciante_actualizado-comprimido.pdf";
+  "https://koedtnkmbdnfadmdmcpp.supabase.co/storage/v1/object/sign/attachments/requests/TCK-2026-A-4260/1788900487369_PL-Politica%20Proteccion%20al%20Denunciante.pdf?token=eyJraWQiOiJhOGQzOTM2NS1kYTRmLTRhZGUtOTE0ZC0xZGQ0N2ViYTc3M2EiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhdHRhY2htZW50cy9yZXF1ZXN0cy9UQ0stMjAyNi1BLTQyNjAvMTc4ODkwMDQ4NzM2OV9QTC1Qb2xpdGljYSBQcm90ZWNjaW9uIGFsIERlbnVuY2lhbnRlLnBkZiIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODg5ODUxNDksImV4cCI6MTc4ODk4ODc0OX0.KzWbFfPkNnoh10NT6V0xjGkm5eHpuum8YiStdIp0yXU";
 
 const highlights = [
   {
